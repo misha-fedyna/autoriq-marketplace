@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# AutoRIQ Market
 
-## Getting Started
+AutoRIQ Market - це маркетплейс для продажу автомобілів.
 
-First, run the development server:
+## Встановлення та запуск проєкту
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### 1. Встановлення Node.js та npm
+Якщо у вас ще немає [Node.js](https://nodejs.org/dist/v20.18.3/node-v20.18.3-x64.msi), 
+завантажте та встановіть його.
+
+Перевірте версії після встановлення:
+```sh
+node -v # Should print "v20.18.3".
+npm -v # Should print "10.8.2".
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Клонування проєкту
+Клонуйте репозиторій:
+```sh
+mkdir Team-Project // Спочатку створіть папку і 
+                    потім перейдіть в неї.
+cd Team-Project  
+git clone https://github.com/misha-fedyna/autoriq-marketplace.git
+cd autoriq-market
+```
+### !!! Обов'язково:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Після того як скачали репозиторій, виконайте спочатку ці команди:
+``` sh
+git checkout dev // з гілки main перейдіть в гілку dev. Пізніше в гілці dev ви 
+будете створювати інші гілки і зберігати там ваші комітию
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+git pull origin dev // скачаєте остані зміни з поточної гілки
+```
 
-## Learn More
+### 3. Встановлення залежностей
+Запустіть цю команду для встановлення всіх пакетів:
+```sh
+npm install
 
-To learn more about Next.js, take a look at the following resources:
+### 4. Запуск проєкту в режимі розробки
+Після встановлення всіх залежностей запустіть сервер розробки:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Проєкт буде доступний за адресою **http://localhost:3000** у браузері.
 
-## Deploy on Vercel
+### 5. Додаткові команди
+- **Збірка проєкту**: `npm run build`
+- **Запуск продакшн-сервера**: `npm run start`
+- **Перевірка коду ESLint**: `npm run lint`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
