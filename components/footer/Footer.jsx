@@ -10,8 +10,8 @@ const Footer = () => {
   return (
     <footer className="bg-blue-700 text-white p-8 border-t-4 border-white">
       <div className="m-0">
-        <div className="lg:flex lg:flex-col-2 lg:justify-between">
-          <div className="flex flex-col-2 items-center lg:gap-16">
+        <div className="max-lg:flex flex-col-2 justify-between">
+          <div className="flex flex-col-2 items-center max-lg:gap-16">
             <div className="mb-4">
               <Link href="/">
                 <Image
@@ -26,7 +26,7 @@ const Footer = () => {
               <p>{`© ${currentYear} Autoriq`}</p>
             </div>
 
-            <div className="lg:mb-2 lg:ml-4 ml-28">
+            <div className="ml-28 max-lg:mb-2 max-lg:ml-4">
               <h4 className="m-0 mb-2 text-3xl font-bold">Follow us</h4>
               <div className="flex gap-4">
                 <FaFacebook className="w-8 h-8" />
