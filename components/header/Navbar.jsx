@@ -16,10 +16,16 @@ const Navbar = () => {
   const session = true;
 
   return (
-    <nav className="bg-blue-700 p-5 flex justify-between items-center border-b border-blue-500">
+    <nav className="bg-blue-700 p-2 flex justify-between items-center border-b border-blue-500">
       <div className="flex items-center pl-10 space-x-6">
         <Link href="/">
-          <Image src={logo} alt="Logo" className="p-2" height={50} width={50} />
+          <Image
+            src={logo}
+            alt="Logo"
+            className="p-0"
+            height={150}
+            width={150}
+          />
         </Link>
 
         <span className="hidden md:block text-3xl text-white font-bold">
