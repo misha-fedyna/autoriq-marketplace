@@ -69,11 +69,15 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="hidden md:flex justify-end items-center pr-10 space-x-5">
-        <Link href="/message">
-          <MessageSquareMore className="h-6 w-6 text-white" />
-        </Link>
-        {session && <AccountImageAndDropdown />}
+      <div className="max-sm:hidden flex justify-end items-center pr-10 space-x-5">
+        {session && (
+          <div className="flex gap-4 items-center">
+            <Link href="/message">
+              <MessageSquareMore className="h-6 w-6 text-white" />
+            </Link>
+            <AccountImageAndDropdown />
+          </div>
+        )}
 
         {!session && (
           <Link href="/login">
