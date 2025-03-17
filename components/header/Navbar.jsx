@@ -59,11 +59,11 @@ const Navbar = () => {
           </Link>
 
           {session && (
-            <Link href="/add-car">
+            <Link href="/cars/add-car">
               <Button
                 variant="ghost"
                 className={`${
-                  pathname === "/add-car"
+                  pathname === "/cars/add-car"
                     ? "bg-white text-blue-500 hover:bg-blue-300 hover:text-white"
                     : "text-white hover:bg-blue-300 hover:text-white"
                 }`}
@@ -76,14 +76,7 @@ const Navbar = () => {
       </div>
 
       <div className="max-sm:hidden flex justify-end items-center pr-10 space-x-5">
-        {session && (
-          <div className="flex gap-4 items-center">
-            <Link href="/message">
-              <MessageSquareMore className="h-6 w-6 text-white" />
-            </Link>
-            <AccountImageAndDropdown />
-          </div>
-        )}
+        {session && <AccountImageAndDropdown />}
 
         {!session && (
           <Link href="/login">
