@@ -23,7 +23,7 @@ import profileDefault from "@/assets/images/profile.png";
 const MenuMobile = () => {
   const pathname = usePathname();
 
-  const session = false;
+  const session = true;
 
   return (
     <div className="block md:hidden">
