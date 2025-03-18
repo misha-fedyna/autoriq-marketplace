@@ -1,4 +1,4 @@
-import Hero from "@/components/header/Hero";
+import Hero from "@/components/main/Hero";
 
 const HomePage = () => {
   return (
