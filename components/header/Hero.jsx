@@ -5,6 +5,7 @@ import HeroImage from "../../assets/images/HeroCarImg.png";
 
 const Hero = () => {
     return (
+        // Тут хіба зі стилями погратися ще та і все наче
         <section className="px-10 py-10">
             <div className="flex flex-col md:flex-row items-center justify-between mb-32">
                 <div className="w-full md:w-1/2">
