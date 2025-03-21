@@ -8,6 +8,7 @@ import Image from "next/image";
 import profileDefault from "@/assets/images/profile.png";
 import Link from "next/link";
 
+
 const AccountImageAndDropdown = () => {
   return (
     <DropdownMenu>
