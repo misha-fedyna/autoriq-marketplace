@@ -69,7 +69,9 @@ const ChooseRegions = () => {
 
   return (
     <div className="flex flex-col gap-2">
-      <h1 className="font-medium">Виберіть регіони</h1>
+      <h1 className="font-medium max-sm:flex max-sm:justify-start">
+        Виберіть регіони
+      </h1>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button

@@ -109,7 +109,9 @@ const ChooseMarks = () => {
 
   return (
     <>
-      <h1 className="font-medium">Я шукаю авто</h1>
+      <h1 className="font-medium max-sm:flex max-sm:justify-start">
+        Я шукаю авто
+      </h1>
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button

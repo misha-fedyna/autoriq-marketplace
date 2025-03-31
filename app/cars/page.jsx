@@ -7,9 +7,9 @@ const CarsPage = () => {
   return (
     <>
       <SearchCar />
-      <div className="flex ml-[100px] mt-[65px] mb-[50px] gap-[100px]">
+      <div className="flex ml-[100px] mt-[65px] mb-[50px] gap-[100px] max-sm:gap-[40px] max-sm:ml-0 max-sm:mt-[20px] max-sm:flex-col">
         <CarFilter />
-        <div className="flex flex-col gap-y-[20px]">
+        <div className="flex flex-col gap-y-[20px] max-sm:mt-0">
           <CarCard />
           <CarCard />
           <CarCard />
