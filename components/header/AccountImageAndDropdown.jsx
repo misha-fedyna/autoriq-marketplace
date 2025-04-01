@@ -8,7 +8,6 @@ import Image from "next/image";
 import profileDefault from "@/assets/images/profile.png";
 import Link from "next/link";
 
-
 const AccountImageAndDropdown = () => {
   return (
     <DropdownMenu>
@@ -22,7 +21,7 @@ const AccountImageAndDropdown = () => {
         />
       </DropdownMenuTrigger>
       <DropdownMenuContent>
-        <Link href="/prifile">
+        <Link href="/profile">
           <DropdownMenuCheckboxItem>Профіль</DropdownMenuCheckboxItem>
         </Link>
 
