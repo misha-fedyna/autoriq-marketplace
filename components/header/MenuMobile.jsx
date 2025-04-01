@@ -106,7 +106,7 @@ const MenuMobile = () => {
                   )}
                 </DropdownMenuTrigger>
                 <DropdownMenuContent>
-                  <Link href="/prifile">
+                  <Link href="/profile">
                     <DropdownMenuCheckboxItem>Профіль</DropdownMenuCheckboxItem>
                   </Link>
 
