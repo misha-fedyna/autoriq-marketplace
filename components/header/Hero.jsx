@@ -4,8 +4,8 @@ import HeroImage from "../../assets/images/HeroCarImg.png";
 
 const Hero = () => {
   return (
-    <section className="px-10 py-10 max-sm:px-0 max-sm:pt-0">
-      <div className="flex flex-col md:flex-row items-center justify-between mb-[140px]">
+    <section className="px-10 max-sm:px-0 max-sm:pt-0">
+      <div className="flex flex-col md:flex-row items-center justify-between mb-[100px] max-sm:mb-[50px]">
         <div className="w-full md:w-1/2 mt-[60px] max-sm:mt-0">
           <div className="max-sm:flex max-sm:flex-col max-sm:items-center max-sm:bg-[url('../../assets/images/MainImgOnMob.png')] max-sm:bg-cover max-sm:bg-center max-sm:p-10 max-sm:mb-[50px]">
             <h1 className="text-center text-5xl font-bold text-blue-500 mb-[60px] w-[828px] max-sm:w-[425px] max-sm:font-semibold max-sm:text-white max-sm:mb-0">
