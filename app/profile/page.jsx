@@ -1,109 +1,63 @@
 import Image from "next/image";
 import profileImg from "../../assets/images/profile.png";
-import carCardImg from "../../assets/images/DefaultCarImg.png";
-import CarCard from "./carCards.jsx";
+import CarCard from "../../components/profile/carCards.jsx";
+import { Button } from "@/components/ui/button";
 
 const Profile = () => {
-    const cars = [
-        {
-            image: carCardImg,
-            title: "NISSAN Qashqai",
-            year: 2018,
-            priceUSD: 12200,
-            priceUAH: 446124,
-            km: 20000,
-            location: "Lviv",
-            fuel: "Diesel 1.6",
-            transmission: "Mechanical"
-        },
-        {
-            image: carCardImg,
-            title: "NISSAN Qashqai",
-            year: 2018,
-            priceUSD: 12200,
-            priceUAH: 446124,
-            km: 20000,
-            location: "Lviv",
-            fuel: "Diesel 1.6",
-            transmission: "Mechanical"
-        },
-        {
-            image: carCardImg,
-            title: "NISSAN Qashqai",
-            year: 2018,
-            priceUSD: 12200,
-            priceUAH: 446124,
-            km: 20000,
-            location: "Lviv",
-            fuel: "Diesel 1.6",
-            transmission: "Mechanical"
-        },
-        {
-            image: carCardImg,
-            title: "NISSAN Qashqai",
-            year: 2018,
-            priceUSD: 12200,
-            priceUAH: 446124,
-            km: 20000,
-            location: "Lviv",
-            fuel: "Diesel 1.6",
-            transmission: "Mechanical"
-        }
-    ];
+  return (
+    <div className="flex max-sm:flex-col mt-[60px] mb-[50px] max-sm:mt-[20px]">
+      <div className=" flex flex-col items-start w-[300px] ml-[150px] max-sm:ml-[50px]">
+        <h2 className="text-[50px] font-regular mb-4 text-center ">Профіль</h2>
 
-    return (
-        <div className="flex flex-col lg:flex-row p-6">
-
-            <div className="w-full lg:w-1/4 p-4 ">
-                <h2 className="text-3xl font-bold mb-4 text-center ">Профіль</h2>
-
-                <div className="flex justify-center mb-4 md:justify-left">
-                    <Image
-                        src={profileImg}
-                        alt="Profile"
-                        className="w-20 h-20 rounded-full border shadow-md"
-                    />
-                </div>
-
-                <div className="text-center space-y-3 md:text-left ">
-                    <div >
-                        <p className="font-semibold">Прізвище та ім’я:</p>
-                        <p>Коваленко Андрій</p>
-                    </div>
-                    <div>
-                        <p className="font-semibold">Пошта:</p>
-                        <p>andriy@gmail.com</p>
-                    </div>
-                    <div>
-                        <p className="font-semibold">Телефон:</p>
-                        <p>0958986953</p>
-                    </div>
-                    <div>
-                        <p className="font-semibold">Область:</p>
-                        <p>Львівська</p>
-                    </div>
-                    <div>
-                        <p className="font-semibold">Місто:</p>
-                        <p>Львів</p>
-                    </div>
-                </div>
-
-                <button className="mt-6 px-6 py-2 bg-yellow-500 text-white font-bold rounded-md w-full">
-                    Редагувати
-                </button>
-            </div>
-
-            {/* Car cards */}
-            <div className="flex-1 p-4">
-                <h2 className="text-3xl font-bold mb-4">Ваші оголошення :</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
-                    {cars.map((car, index) => (
-                        <CarCard key={index} {...car} />
-                    ))}
-
-                </div>
-            </div>
+        <div className="flex  mb-4 justify-left">
+          <Image
+            src={profileImg}
+            alt="Profile"
+            className="w-20 h-20 rounded-full border shadow-md"
+          />
         </div>
-    );
+
+        <div className="space-y-3 text-left ">
+          <div>
+            <p className="font-bold text-[20px]">Прізвище та ім’я:</p>
+            <p>Коваленко Андрій</p>
+          </div>
+          <div>
+            <p className="font-bold text-[20px]">Пошта:</p>
+            <p>andriy@gmail.com</p>
+          </div>
+          <div>
+            <p className="font-bold text-[20px]">Телефон:</p>
+            <p>0958986953</p>
+          </div>
+          <div>
+            <p className="font-bold text-[20px]">Область:</p>
+            <p>Львівська</p>
+          </div>
+          <div>
+            <p className="font-bold text-[20px]">Місто:</p>
+            <p>Львів</p>
+          </div>
+        </div>
+
+        <Button className="mt-6 w-[150px] bg-yellow-400 hover:bg-yellow-500 text-white font-semibold rounded-md text-[20px]">
+          Редагувати
+        </Button>
+      </div>
+
+      {/* Car cards */}
+      <div className="flex-1">
+        <h2 className="text-[50px] font-semibold mb-4 max-sm:text-[30px] max-sm:ml-[50px] max-sm:mt-[30px]">
+          Ваші оголошення :
+        </h2>
+        <div className="grid grid-cols-2 gap-y-[30px] ml-[50px] max-sm:grid-cols-1 max-sm:ml-[40px]">
+          <CarCard />
+          <CarCard />
+          <CarCard />
+          <CarCard />
+        </div>
+      </div>
+    </div>
+  );
 };
-export  default  Profile;
+export default Profile;
