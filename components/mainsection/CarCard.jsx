@@ -9,11 +9,11 @@ import BMW from '../../assets/images/bmw.jpg'
 const CarCard = () => {
     return (
         <div className="flex border-2 border-gray-400 shadow-xl rounded-[8px] flex-col w-[400px] h-[500px] mx-3">
-        <div className="h-[250px]">
+        <div className="max-h-[250px]">
           <Image
             src={BMW}
             alt="car image"
-            className="rounded-[5px] h-auto w-[400px]"
+            className="rounded-[5px] h-full w-[400px]"
           />
         </div>
         {/* Information */}
