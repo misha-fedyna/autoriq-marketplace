@@ -25,7 +25,7 @@ const AccountImageAndDropdown = () => {
           <DropdownMenuCheckboxItem>Профіль</DropdownMenuCheckboxItem>
         </Link>
 
-        <Link href="/booked">
+        <Link href="/cars/saved">
           <DropdownMenuCheckboxItem>Збережені авто</DropdownMenuCheckboxItem>
         </Link>
 
