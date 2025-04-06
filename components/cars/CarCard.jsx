@@ -1,22 +1,22 @@
 import Image from "next/image";
-import CarImg from "../../assets/images/car.webp";
+import CarImg from "../../public/carusel/img-1.webp";
 import { Bookmark } from "lucide-react";
 import { Gauge, Fuel, MapPin } from "lucide-react";
 import gearbox from "../../assets/images/gearbox.png";
 
 const CarCard = () => {
   return (
-    <div className="flex border-2 border-gray-400 shadow-xl w-[800px] h-[250px] rounded-[8px] max-sm:flex-col max-sm:w-[400px] max-sm:h-[440px] max-sm:mx-3">
+    <div className="flex border-2 border-gray-400 shadow-xl w-[800px] h-[250px] rounded-[8px] max-sm:flex-col max-sm:w-[400px] max-sm:h-[460px] max-sm:mx-3">
       <div className="h-[250px]">
         <Image
           src={CarImg}
           alt="car image"
-          height={247}
+          height={247.5}
           className="rounded-[5px] h-auto max-sm:w-[400px]"
         />
       </div>
       {/* Information */}
-      <div className="ml-[20px] pt-[10px] max-sm:pt-[20px]">
+      <div className="ml-[20px] pt-[10px] max-sm:mt-[40px]">
         {/* Марка */}
         <div className="flex items-center">
           <h1 className="text-[30px] font-bold max-sm:text-[25px]">
