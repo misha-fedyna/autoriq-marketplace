@@ -34,7 +34,7 @@ const CarDetailInfo = () => {
         </div>
       </div>
       {/* Characteristics */}
-      <div className="w-[570px] h-auto border-2 border-black rounded-[8px] mt-[40px] flex flex-col">
+      <div className="w-[570px] bg-white shadow-lg h-auto border-2 border-black rounded-[8px] mt-[40px] flex flex-col">
         <p className="font-medium text-[25px] mt-[10px] ml-[20px]">
           Характеристики
         </p>

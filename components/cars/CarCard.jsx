@@ -11,7 +11,7 @@ const CarCard = () => {
         <Image
           src={CarImg}
           alt="car image"
-          height={247}
+          height={247.5}
           className="rounded-[5px] h-auto max-sm:w-[400px]"
         />
       </div>
