@@ -42,7 +42,11 @@ const CarAddForm = () => {
             </AccordionTrigger>
             <AccordionContent>
               <div className="grid max-w-sm items-center gap-1.5 mt-[10px]">
-                <Input id="picture" type="file" />
+                <Input
+                  id="picture"
+                  type="file"
+                  accept="image/png, image/jpeg, image/jpg, image/webp"
+                />
               </div>
             </AccordionContent>
           </AccordionItem>
