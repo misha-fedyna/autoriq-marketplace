@@ -65,7 +65,7 @@ const MenuMobile = () => {
 
             <SheetDescription className="w-5">
               {session && (
-                <Link href="/add-car">
+                <Link href="/cars/add-car">
                   <Button
                     variant="ghost"
                     className={`${
@@ -110,7 +110,7 @@ const MenuMobile = () => {
                     <DropdownMenuCheckboxItem>Профіль</DropdownMenuCheckboxItem>
                   </Link>
 
-                  <Link href="/booked">
+                  <Link href="/cars/saved">
                     <DropdownMenuCheckboxItem>
                       Збережені авто
                     </DropdownMenuCheckboxItem>
