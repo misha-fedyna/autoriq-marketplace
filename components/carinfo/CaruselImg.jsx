@@ -52,7 +52,7 @@ const CaruselImg = () => {
   }, [api]);
 
   return (
-    <div className="relative w-[770px] h-[577px]">
+    <div className="relative w-[770px] h-[577px] max-sm:w-[425px] max-sm:h-[100%]">
       <Carousel setApi={setApi}>
         <CarouselContent>
           {images.map((img, index) => (
@@ -68,10 +68,10 @@ const CaruselImg = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="text-white absolute top-1/2 left-0 transform -translate-y-1/2 z-10 rounded-[8px] rounded-l-none bg-black/50 hover:bg-white/50 w-[50px] h-[60px]" />
-        <CarouselNext className="text-white absolute top-1/2 right-0 transform -translate-y-1/2 z-10 rounded-[8px] rounded-r-none bg-black/50 hover:bg-white/50 w-[50px] h-[60px]" />
+        <CarouselPrevious className="text-white absolute top-1/2 left-0 transform -translate-y-1/2 z-10 rounded-[8px] rounded-l-none bg-black/50 hover:bg-white/50 w-[50px] h-[60px] max-sm:w-[30px] max-sm:h-[40px]" />
+        <CarouselNext className="text-white absolute top-1/2 right-0 transform -translate-y-1/2 z-10 rounded-[8px] rounded-r-none bg-black/50 hover:bg-white/50 w-[50px] h-[60px] max-sm:w-[30px] max-sm:h-[40px]" />
       </Carousel>
-      <div className="flex gap-[10px] absolute top-[520px] right-4 bg-black/50 text-white px-4 py-2 rounded-[8px] z-10">
+      <div className="flex gap-[10px] absolute top-[520px] right-4 bg-black/50 text-white px-4 py-2 rounded-[8px] z-10 max-sm:top-[260px]">
         <ImagesIcon />
         {current + 1} із {images.length}
       </div>

@@ -11,16 +11,16 @@ import { User } from "lucide-react";
 const PhoneButton = () => {
   return (
     <AlertDialog>
-      <AlertDialogTrigger className="flex justify-self-center rounded-[8px] bg-blue-500 m-0 text-white text-[25px] h-12 w-[300px] hover:bg-blue-300 justify-center items-center">
+      <AlertDialogTrigger className="flex rounded-[8px] bg-blue-500 m-0 text-white text-[25px] h-12 w-[300px] hover:bg-blue-300 justify-center items-center max">
         (063) XXX XX XX
       </AlertDialogTrigger>
       <AlertDialogContent>
         <div className="flex items-center">
-          <AlertDialogTitle className="w-auto font-bold text-[20px] text-blue-500 ml-[100px]">
+          <AlertDialogTitle className="w-auto font-bold text-[20px] text-blue-500 ml-[100px] max-sm:ml-[55px]">
             Номер телефону продавця
           </AlertDialogTitle>
 
-          <AlertDialogCancel className="px-3 rounded-full hover:bg-gray-200 transition ml-auto mr-2">
+          <AlertDialogCancel className="px-3 rounded-full hover:bg-gray-200 transition ml-auto mr-2 max-sm:mr-0">
             <X className="w-5 h-5" />
           </AlertDialogCancel>
         </div>
