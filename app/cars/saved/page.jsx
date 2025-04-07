@@ -1,18 +1,16 @@
-import CarCart from "../../../components/saved/carCardFav";
-import HomePage from "@/app/page";
+import CarCardFav from "../../../components/saved/carCardFav";
 
-
-const favoriteCars = () => {
+const FavoriteCars = () => {
     return (
-        <div className="mt-[3.125rem] ml-[5rem] mr-[5rem]">
-            <h2 className="text-4xl mb-[3.75rem]">Збережені оголошення :</h2>
-            <div className="flex justify-between gap-6 mb-[6.25rem]">
-                <CarCart/>
-                <CarCart/>
-                <CarCart/>
+        <div className="mt-[3.125rem] mx-auto max-w-[1024px]">
+            <h2 className="text-[2rem] mb-[3.75rem] text-left text-1xl m-1 ml-1 md:ml-6 lg:(text-4xl m-5)">Збережені оголошення :</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 lg:gap-[6rem] mb-[5rem] m-5">
+                <CarCardFav />
+                <CarCardFav />
+                <CarCardFav />
             </div>
-
         </div>
-    )
+    );
 };
-export default favoriteCars;
+
+export default FavoriteCars;
