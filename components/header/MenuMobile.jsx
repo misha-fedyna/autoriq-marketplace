@@ -19,11 +19,13 @@ import {
 } from "../ui/dropdown-menu";
 import Image from "next/image";
 import profileDefault from "@/assets/images/profile.png";
+import RegisterForm from "../registration/RegisterForm";
 
 const MenuMobile = () => {
   const pathname = usePathname();
 
-  const session = true;
+  // const session = true;
+  const session = false;
 
   return (
     <div className="block md:hidden">
@@ -80,16 +82,7 @@ const MenuMobile = () => {
               )}
             </SheetDescription>
             <SheetDescription className="w-5">
-              {!session && (
-                <Link href="/login">
-                  <Button
-                    variant="default"
-                    className="bg-white text-blue-500 hover:bg-blue-300 hover:text-white"
-                  >
-                    <FaGoogle /> Log In
-                  </Button>
-                </Link>
-              )}
+              {!session && <RegisterForm />}
             </SheetDescription>
 
             <SheetDescription className="w-5">

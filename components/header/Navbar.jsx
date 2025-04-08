@@ -9,11 +9,13 @@ import { FaGoogle } from "react-icons/fa";
 import { CarFront, SquarePlus, House, MessageSquareMore } from "lucide-react";
 import MenuMobile from "@/components/header/MenuMobile";
 import AccountImageAndDropdown from "./AccountImageAndDropdown";
+import RegisterForm from "@/components/registration/RegisterForm";
 
 const Navbar = () => {
   const pathname = usePathname();
 
-  const session = true;
+  // const session = true;
+  const session = false;
 
   return (
     <nav className="bg-blue-700 p-2 flex justify-between items-center border-b border-blue-500">
@@ -40,7 +42,7 @@ const Navbar = () => {
                 pathname === "/"
                   ? "bg-white text-blue-500 hover:bg-blue-300 hover:text-white"
                   : "text-white hover:bg-blue-300 hover:text-white"
-              }`}
+                }`}
             >
               <House /> Головна
             </Button>
@@ -52,7 +54,7 @@ const Navbar = () => {
                 pathname === "/cars"
                   ? "bg-white text-blue-500 hover:bg-blue-300 hover:text-white"
                   : "text-white hover:bg-blue-300 hover:text-white"
-              }`}
+                }`}
             >
               <CarFront /> Автомобілі
             </Button>
@@ -66,7 +68,7 @@ const Navbar = () => {
                   pathname === "/cars/add-car"
                     ? "bg-white text-blue-500 hover:bg-blue-300 hover:text-white"
                     : "text-white hover:bg-blue-300 hover:text-white"
-                }`}
+                  }`}
               >
                 <SquarePlus /> Додати автомобіль
               </Button>
@@ -79,14 +81,8 @@ const Navbar = () => {
         {session && <AccountImageAndDropdown />}
 
         {!session && (
-          <Link href="/login">
-            <Button
-              variant="default"
-              className="bg-white text-blue-500 hover:bg-blue-300 hover:text-white"
-            >
-              <FaGoogle /> Log In
-            </Button>
-          </Link>
+        <RegisterForm />
+          
         )}
       </div>
       <MenuMobile />
