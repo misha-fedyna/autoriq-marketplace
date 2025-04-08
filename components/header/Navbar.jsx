@@ -9,12 +9,13 @@ import { FaGoogle } from "react-icons/fa";
 import { CarFront, SquarePlus, House, MessageSquareMore } from "lucide-react";
 import MenuMobile from "@/components/header/MenuMobile";
 import AccountImageAndDropdown from "./AccountImageAndDropdown";
-import RegisterModal from "@/components/registration/RegisterForm";
+import RegisterForm from "@/components/registration/RegisterForm";
 
 const Navbar = () => {
   const pathname = usePathname();
 
-  const session = true;
+  // const session = true;
+  const session = false;
 
   return (
     <nav className="bg-blue-700 p-2 flex justify-between items-center border-b border-blue-500">
@@ -79,16 +80,9 @@ const Navbar = () => {
       <div className="max-sm:hidden flex justify-end items-center pr-10 space-x-5">
         {session && <AccountImageAndDropdown />}
 
-        <RegisterModal />
         {!session && (
-          <Link href="/login">
-            <Button
-              variant="default"
-              className="bg-white text-blue-500 hover:bg-blue-300 hover:text-white"
-            >
-              <FaGoogle /> Log In
-            </Button>
-          </Link>
+        <RegisterForm />
+          
         )}
       </div>
       <MenuMobile />
