@@ -2,6 +2,7 @@ import Image from "next/image";
 import profileImg from "../../assets/images/profile.png";
 import CarCard from "../../components/profile/carCards.jsx";
 import { Button } from "@/components/ui/button";
+import  Link from "next/link";
 
 const Profile = () => {
   return (
@@ -11,9 +12,9 @@ const Profile = () => {
 
         <div className="flex  mb-4 justify-left">
           <Image
-            src={profileImg}
-            alt="Profile"
-            className="w-20 h-20 rounded-full border shadow-md"
+              src={profileImg}
+              alt="Profile"
+              className="w-20 h-20 rounded-full border shadow-md"
           />
         </div>
 
@@ -39,10 +40,12 @@ const Profile = () => {
             <p>Львів</p>
           </div>
         </div>
-
-        <Button className="mt-6 w-[150px] bg-yellow-400 hover:bg-yellow-500 text-white font-semibold rounded-md text-[20px]">
-          Редагувати
-        </Button>
+        <Link href="/profile/change">
+          <Button
+              className="mt-6 w-[150px] bg-yellow-400 hover:bg-yellow-500 text-white font-semibold rounded-md text-[20px]">
+            Редагувати
+          </Button>
+        </Link>
       </div>
 
       {/* Car cards */}
