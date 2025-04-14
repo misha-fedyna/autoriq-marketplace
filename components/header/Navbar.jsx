@@ -42,7 +42,7 @@ const Navbar = () => {
                 pathname === "/"
                   ? "bg-white text-blue-500 hover:bg-blue-300 hover:text-white"
                   : "text-white hover:bg-blue-300 hover:text-white"
-                }`}
+              }`}
             >
               <House /> Головна
             </Button>
@@ -54,7 +54,7 @@ const Navbar = () => {
                 pathname === "/cars"
                   ? "bg-white text-blue-500 hover:bg-blue-300 hover:text-white"
                   : "text-white hover:bg-blue-300 hover:text-white"
-                }`}
+              }`}
             >
               <CarFront /> Автомобілі
             </Button>
@@ -68,7 +68,7 @@ const Navbar = () => {
                   pathname === "/cars/add-car"
                     ? "bg-white text-blue-500 hover:bg-blue-300 hover:text-white"
                     : "text-white hover:bg-blue-300 hover:text-white"
-                  }`}
+                }`}
               >
                 <SquarePlus /> Додати автомобіль
               </Button>
@@ -80,10 +80,7 @@ const Navbar = () => {
       <div className="max-sm:hidden flex justify-end items-center pr-10 space-x-5">
         {session && <AccountImageAndDropdown />}
 
-        {!session && (
-        <RegisterForm />
-          
-        )}
+        {!session && <RegisterForm />}
       </div>
       <MenuMobile />
     </nav>
