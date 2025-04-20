@@ -18,34 +18,35 @@ import { Textarea } from "../ui/textarea";
 const CarAddForm = () => {
   return (
     <form action="">
-      <div className="h-[56px] w-[479px] max-sm:w-[280px] mx-auto">
+      <div className="h-[56px] w-[479px] max-sm:w-[280px] mx-auto max-sm:mt-[-20px]">
         <p className="text-white font-medium text-[50px] max-sm:text-[30px]">
           Додати автомобіль
         </p>
       </div>
 
       <div className="flex flex-col items-center mx-auto mt-[50px] max-sm:mt-0 w-max">
-        <Accordion type="single" collapsible>
+        <Accordion type="multiple">
           {/* Item 1 */}
           <AccordionItem value="item-1">
             <AccordionTrigger className="text-white">
               <div className="flex items-center flex-row">
-                <div className="flex justify-center align-center w-[50px] h-[50px] bg-white rounded-full max-sm:w-[30px] max-sm:h-[30px]">
-                  <p className="text-[#2196F3] font-normal text-[30px] max-sm:text-[20px]">
+                <div className="flex justify-center align-center w-[50px] h-[50px] bg-white rounded-full max-sm:w-[30px] max-sm:h-[30px] max-[320px]:h-[20px] max-[320px]:w-[20px]">
+                  <p className="text-[#2196F3] font-normal text-[30px] max-sm:text-[20px] max-[320px]:text-[15px]">
                     1
                   </p>
                 </div>
-                <p className="text-white font-medium text-[40px] mx-[15px] max-sm:text-[20px]">
+                <p className="text-white font-medium text-[40px] mx-[15px] max-sm:text-[20px] max-[375px]:text-[15px]">
                   Додайте фотографії автомобіля
                 </p>
               </div>
             </AccordionTrigger>
             <AccordionContent>
-              <div className="grid max-w-sm items-center gap-1.5 mt-[10px]">
+              <div className="grid max-w-sm items-center gap-1.5 mt-[10px] max-[375px]:w-[300px] max-[320px]:w-[250px] max-[320px]:mx-auto">
                 <Input
                   id="picture"
                   type="file"
                   accept="image/png, image/jpeg, image/jpg, image/webp"
+                  className="max-[320px]:text-[10px]"
                 />
               </div>
             </AccordionContent>
@@ -54,20 +55,20 @@ const CarAddForm = () => {
           <AccordionItem value="item-2">
             <AccordionTrigger className="text-white">
               <div className="flex items-center flex-row">
-                <div className="flex justify-center align-center w-[50px] h-[50px] bg-white rounded-full max-sm:w-[30px] max-sm:h-[30px]">
-                  <p className="text-[#2196F3] font-normal text-[30px] max-sm:text-[20px]">
+                <div className="flex justify-center align-center w-[50px] h-[50px] bg-white rounded-full max-sm:w-[30px] max-sm:h-[30px] max-[320px]:h-[20px] max-[320px]:w-[20px]">
+                  <p className="text-[#2196F3] font-normal text-[30px] max-sm:text-[20px] max-[320px]:text-[15px]">
                     2
                   </p>
                 </div>
-                <p className="text-white font-medium text-[40px] mx-[15px] max-sm:text-[20px]">
+                <p className="text-white font-medium text-[40px] mx-[15px] max-sm:text-[20px] max-[375px]:text-[15px]">
                   Основна інформація
                 </p>
               </div>
             </AccordionTrigger>
             <AccordionContent>
-              <div className="grid grid-cols-2 gap-x-[50px] gap-y-[20px] max-sm:grid max-sm:grid-cols-1 max-sm:justify-self-center">
+              <div className="grid grid-cols-2 gap-x-[50px] gap-y-[20px] max-sm:grid max-sm:grid-cols-2 max-sm:gap-x-[20px] max-[375px]:gap-y-[10px] max-[320px]:gap-x-[10px]">
                 <Select>
-                  <SelectTrigger className="w-[263px]">
+                  <SelectTrigger className="w-[263px] max-sm:w-[170px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]">
                     <SelectValue placeholder="Тип автомобіля" />
                   </SelectTrigger>
                   <SelectContent>
@@ -78,7 +79,7 @@ const CarAddForm = () => {
                   </SelectContent>
                 </Select>
                 <Select>
-                  <SelectTrigger className="w-[263px]">
+                  <SelectTrigger className="w-[263px] max-sm:w-[170px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]">
                     <SelectValue placeholder="Марка автомобіля" />
                   </SelectTrigger>
                   <SelectContent>
@@ -95,19 +96,19 @@ const CarAddForm = () => {
                 <Input
                   type="number"
                   placeholder="Пробіг (тис.км)"
-                  className="w-[263px]"
+                  className="w-[263px] max-sm:w-[170px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]"
                 />
                 <Input
                   type="number"
                   placeholder="Рік випуску"
-                  className="w-[263px]"
+                  className="w-[263px] max-sm:w-[170px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]"
                 />
                 <Input
                   type="text"
                   placeholder="Область"
-                  className="w-[263px]"
+                  className="w-[263px] max-sm:w-[170px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]"
                 />
-                <Input type="text" placeholder="Місто" className="w-[263px]" />
+                <Input type="text" placeholder="Місто" className="w-[263px] max-sm:w-[170px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]" />
               </div>
             </AccordionContent>
           </AccordionItem>
@@ -115,12 +116,12 @@ const CarAddForm = () => {
           <AccordionItem value="item-3">
             <AccordionTrigger className="text-white">
               <div className="flex items-center flex-row">
-                <div className="flex justify-center align-center w-[50px] h-[50px] bg-white rounded-full max-sm:w-[30px] max-sm:h-[30px]">
-                  <p className="text-[#2196F3] font-normal text-[30px] max-sm:text-[20px]">
+                <div className="flex justify-center align-center w-[50px] h-[50px] bg-white rounded-full max-sm:w-[30px] max-sm:h-[30px] max-[320px]:h-[20px] max-[320px]:w-[20px]">
+                  <p className="text-[#2196F3] font-normal text-[30px] max-sm:text-[20px] max-[320px]:text-[15px]">
                     3
                   </p>
                 </div>
-                <p className="text-white font-medium text-[40px] mx-[15px] max-sm:text-[20px]">
+                <p className="text-white font-medium text-[40px] mx-[15px] max-sm:text-[20px] max-[375px]:text-[15px]">
                   Опис автомобіля
                 </p>
               </div>
@@ -133,20 +134,21 @@ const CarAddForm = () => {
           <AccordionItem value="item-4">
             <AccordionTrigger className="text-white">
               <div className="flex items-center flex-row">
-                <div className="flex justify-center align-center w-[50px] h-[50px] bg-white rounded-full max-sm:w-[30px] max-sm:h-[30px]">
-                  <p className="text-[#2196F3] font-normal text-[30px] max-sm:text-[20px]">
+                <div className="flex justify-center align-center w-[50px] h-[50px] bg-white rounded-full max-sm:w-[30px] max-sm:h-[30px] max-[320px]:h-[20px] max-[320px]:w-[20px]">
+                  <p className="text-[#2196F3] font-normal text-[30px] max-sm:text-[20px] max-[320px]:text-[15px]">
                     4
                   </p>
                 </div>
-                <p className="text-white font-medium text-[40px] mx-[15px] max-sm:text-[20px]">
+                <p className="text-white font-medium text-[40px] mx-[15px] max-sm:text-[20px] max-[375px]:text-[15px]">
                   Характеристики авто
                 </p>
               </div>
             </AccordionTrigger>
             <AccordionContent>
-              <div className="grid grid-cols-2 gap-x-[50px] gap-y-[20px] max-sm:grid max-sm:grid-cols-1 max-sm:justify-self-center">
+              <div className="grid grid-cols-2 gap-x-[50px] gap-y-[20px]
+               max-sm:gap-x-0">
                 <Select>
-                  <SelectTrigger className="w-[263px]">
+                  <SelectTrigger className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]">
                     <SelectValue placeholder="Коробка передач" />
                   </SelectTrigger>
                   <SelectContent>
@@ -155,7 +157,7 @@ const CarAddForm = () => {
                   </SelectContent>
                 </Select>
                 <Select>
-                  <SelectTrigger className="w-[263px]">
+                  <SelectTrigger className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]">
                     <SelectValue placeholder="Паливо" />
                   </SelectTrigger>
                   <SelectContent>
@@ -165,7 +167,7 @@ const CarAddForm = () => {
                   </SelectContent>
                 </Select>
                 <Select>
-                  <SelectTrigger className="w-[263px]">
+                  <SelectTrigger className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]">
                     <SelectValue placeholder="Привід" />
                   </SelectTrigger>
                   <SelectContent>
@@ -175,7 +177,7 @@ const CarAddForm = () => {
                   </SelectContent>
                 </Select>
                 <Select>
-                  <SelectTrigger className="w-[263px]">
+                  <SelectTrigger className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]">
                     <SelectValue placeholder="Участь у ДТП" />
                   </SelectTrigger>
                   <SelectContent>
@@ -185,20 +187,20 @@ const CarAddForm = () => {
                 </Select>
                 <Input
                   type="number"
-                  placeholder="Потужність двигуна (к/с)"
-                  className="w-[263px]"
+                  placeholder="Потужність двигуна"
+                  className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]"
                 />
                 <Input
                   type="number"
                   placeholder="О'єм двигуна"
-                  className="w-[263px]"
+                  className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]"
                 />
                 <Input
                   type="number"
                   placeholder="Кількість дверей"
-                  className="w-[263px]"
+                  className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]"
                 />
-                <Input type="text" placeholder="Колір" className="w-[263px]" />
+                <Input type="text" placeholder="Колір" className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]" />
               </div>
             </AccordionContent>
           </AccordionItem>
@@ -206,21 +208,21 @@ const CarAddForm = () => {
           <AccordionItem value="item-5">
             <AccordionTrigger className="text-white">
               <div className="flex items-center flex-row">
-                <div className="flex justify-center align-center w-[50px] h-[50px] bg-white rounded-full max-sm:w-[30px] max-sm:h-[30px]">
-                  <p className="text-[#2196F3] font-normal text-[30px] max-sm:text-[20px]">
+                <div className="flex justify-center align-center w-[50px] h-[50px] bg-white rounded-full max-sm:w-[30px] max-sm:h-[30px] max-[320px]:h-[20px] max-[320px]:w-[20px]">
+                  <p className="text-[#2196F3] font-normal text-[30px] max-sm:text-[20px] max-[320px]:text-[15px]">
                     5
                   </p>
                 </div>
-                <p className="text-white font-medium text-[40px] mx-[15px] max-sm:text-[20px]">
+                <p className="text-white font-medium text-[40px] mx-[15px] max-sm:text-[20px] max-[375px]:text-[15px]">
                   Вартість
                 </p>
               </div>
             </AccordionTrigger>
             <AccordionContent>
               <div className="flex gap-[15px]">
-                <Input type="number" placeholder="Ціна" className="w-[263px]" />
+                <Input type="number" placeholder="Ціна" className="w-[263px] max-[375px]:w-[200px] max-[375px]:h-[30px]" />
                 <Select>
-                  <SelectTrigger className="w-[58px]">
+                  <SelectTrigger className="w-[58px] max-[375px]:h-[30px]">
                     <SelectValue placeholder="₴" />
                   </SelectTrigger>
                   <SelectContent>
