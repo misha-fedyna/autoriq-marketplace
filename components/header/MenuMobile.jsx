@@ -24,8 +24,8 @@ import RegisterForm from "../registration/RegisterForm";
 const MenuMobile = () => {
   const pathname = usePathname();
 
-  // const session = true;
-  const session = false;
+  const session = true;
+  // const session = false;
 
   return (
     <div className="block md:hidden">

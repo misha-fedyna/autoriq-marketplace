@@ -11,21 +11,21 @@ import { User } from "lucide-react";
 const PhoneButton = () => {
   return (
     <AlertDialog>
-      <AlertDialogTrigger className="flex rounded-[8px] bg-blue-500 m-0 text-white text-[25px] h-12 w-[300px] hover:bg-blue-300 justify-center items-center max">
+      <AlertDialogTrigger className="flex rounded-[8px] bg-blue-500 m-0 text-white text-[25px] h-12 w-[300px] hover:bg-blue-300 justify-center items-center max-[320px]:w-[250px]">
         (063) XXX XX XX
       </AlertDialogTrigger>
       <AlertDialogContent>
         <div className="flex items-center">
-          <AlertDialogTitle className="w-auto font-bold text-[20px] text-blue-500 ml-[100px] max-sm:ml-[55px]">
+          <AlertDialogTitle className="w-auto font-bold text-[20px] text-blue-500 ml-[100px] max-sm:ml-[55px] max-[375px]:ml-[50px] max-[375px]:text-[17px] max-[320px]:ml-[-10px] max-[320px]:!text-[18px]">
             Номер телефону продавця
           </AlertDialogTitle>
 
-          <AlertDialogCancel className="px-3 rounded-full hover:bg-gray-200 transition ml-auto mr-2 max-sm:mr-0">
+          <AlertDialogCancel className="px-3 rounded-full hover:bg-gray-200 transition ml-auto mr-2 max-sm:mr-[-20px] max-[320px]:mr-0">
             <X className="w-5 h-5" />
           </AlertDialogCancel>
         </div>
         {/* Content */}
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center max-[320px]:w-[300px] max-[320px]:ml-[-15px]">
           <p className="text-[25px] font-semibold">Dodge Challenger 2023</p>
           <div className="flex items-center mb-[10px] mt-[40px] gap-[10px]">
             <div className="rounded-full w-[40px] h-[40px] bg-white border-2 border-gray-500 flex items-center justify-center">

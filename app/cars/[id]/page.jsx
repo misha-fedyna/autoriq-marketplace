@@ -4,7 +4,7 @@ import RightSideInfo from "@/components/carinfo/RightSideInfo";
 
 const CarPage = () => {
   return (
-    <div className="flex h-full w-ful bg-blue-100 max-sm:flex-col">
+    <div className="flex h-full w-ful bg-blue-100 max-sm:flex-col justify-center">
       {/* Image and detail information */}
       <div className="flex flex-col ml-[60px] mt-[40px] mb-[100px] max-sm:mx-0 max-sm:mb-[20px]">
         <CaruselImg />
@@ -15,6 +15,7 @@ const CarPage = () => {
         <RightSideInfo />
       </div>
     </div>
+    // </section>
   );
 };
 

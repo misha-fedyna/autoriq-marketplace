@@ -2,11 +2,11 @@ import CarCardFav from "../../../components/saved/CarCardFav";
 
 const FavoriteCars = () => {
   return (
-    <div className="mt-[3.125rem] mx-auto max-w-[1024px]">
-      <h2 className="text-[2rem] mb-[3.75rem] text-left text-1xl m-1 ml-1 md:ml-6 lg:(text-4xl m-5)">
+    <div className="mt-[30px] mx-auto max-w-[1024px]">
+      <h2 className="text-[50px] font-semibold mb-[3.75rem] text-left ml-[20px] max-sm:text-[30px] max-sm:mb-[30px] max-sm:text-center max-sm:ml-0 max-[320px]:text-[25px]">
         Збережені оголошення :
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 lg:gap-[6rem] mb-[5rem] m-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 lg:gap-[6rem] mb-[50px] m-5">
         <CarCardFav />
         <CarCardFav />
         <CarCardFav />

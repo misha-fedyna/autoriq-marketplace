@@ -2,7 +2,7 @@ import SubmitMessageButton from "./SubmitMessageButton";
 
 const ContactUsForm = () => {
   return (
-    <form className="mx-[80px] max-sm:mx-[35px]">
+    <form className="mx-auto max-[320px]:w-[280px] max-[320px]:ml-[-15px]">
       <input type="hidden" id="property" name="property" />
       <input type="hidden" id="recipient" name="recipient" />
       <div className="mb-4">
