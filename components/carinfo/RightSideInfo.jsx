@@ -14,7 +14,7 @@ const RightSideInfo = () => {
         <Bookmark className="!w-[30px] !h-[30px]" />
         Додати в обране
       </Button>
-      <div className="flex flex-col bg-white rounded-[8px] mt-[40px] h-auto shadow-lg p-5 max-sm:mt-0 max-sm:mb-[50px] max-sm:w-full">
+      <div className="flex flex-col bg-white rounded-[8px] mt-[40px] max-w-[600px] h-auto shadow-lg p-5 max-sm:mt-[-20px] max-sm:mb-[50px] max-sm:mx-3 max-[375px]:mt-[-30px]">
         {/* User info */}
         <div className="flex items-center mb-[10px] gap-[10px]">
           <div className="rounded-full w-[40px] h-[40px] bg-white border-2 border-gray-500 flex items-center justify-center">
@@ -24,7 +24,7 @@ const RightSideInfo = () => {
         </div>
         <PhoneButton />
         {/* User description about car */}
-        <p className="text-[30px] mt-[30px] mb-2 max-sm:mt-[10px]">
+        <p className="text-[30px] mt-[30px] mb-2 max-sm:mt-[10px] max-[320px]:text-[25px] max-[320px]:font-semibold">
           Опис від продавця
         </p>
         <p className="text-[20px] font-normal">
