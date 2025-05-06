@@ -44,11 +44,6 @@ export default function RegisterForm() {
     // TODO: реалізувати реєстрацію через бекенд
   };
 
-  const handleGoogleSignup = () => {
-    console.log("Реєстрація через Google");
-    // TODO: реалізувати Google OAuth
-  };
-
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -78,25 +73,37 @@ export default function RegisterForm() {
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="name">Ім’я користувача</Label>
+                <Label htmlFor="name">Прізвіще та ім'я</Label>
                 <Input
                   id="name"
                   name="name"
                   type="text"
-                  placeholder="Вкажіть ім'я..."
+                  placeholder="Вкажіть прізвище та ім'я..."
                   value={form.name}
                   onChange={handleChange}
                   required
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="email">Електронна пошта</Label>
+                <Label htmlFor="email">Електрона пошта</Label>
                 <Input
                   id="email"
                   name="email"
                   type="email"
-                  placeholder="Введіть електронну пошту..."
-                  value={form.email}
+                  placeholder="Введіть електрону пошту..."
+                  value={form.phone}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="phone">Номер телефону</Label>
+                <Input
+                  id="phone"
+                  name="phone"
+                  type="phone"
+                  placeholder="Введіть номер телефону..."
+                  value={form.phone}
                   onChange={handleChange}
                   required
                 />
@@ -147,26 +154,6 @@ export default function RegisterForm() {
                 className="w-full bg-blue-700 hover:bg-blue-300"
               >
                 Зареєструватися
-              </Button>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <div className="flex-1 h-px bg-gray-300" />
-                або
-                <div className="flex-1 h-px bg-gray-300" />
-              </div>
-              <Button
-                type="button"
-                variant="outline"
-                className="w-full"
-                onClick={handleGoogleSignup}
-              >
-                <Image
-                  src="https://www.svgrepo.com/show/475656/google-color.svg"
-                  alt="Google"
-                  width={20}
-                  height={20}
-                  className="w-5 h-5 mr-2"
-                />{" "}
-                Зареєструватися за допомогою Google
               </Button>
             </form>
             <p className="text-sm text-center text-muted-foreground">
