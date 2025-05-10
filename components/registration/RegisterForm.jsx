@@ -14,10 +14,9 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
 
-export default function RegisterForm() {
+
+export default function RegisterForm({ show, onOpenChange, onShowLogin }) {
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -45,7 +44,7 @@ export default function RegisterForm() {
   };
 
   return (
-    <Dialog>
+    <Dialog open={show} onOpenChange={onOpenChange}>
       <DialogTrigger asChild>
         <Button
           variant="ghost"
@@ -158,9 +157,13 @@ export default function RegisterForm() {
             </form>
             <p className="text-sm text-center text-muted-foreground">
               Вже маєте акаунт?{" "}
-              <Link href="#" className="underline">
+              <Button
+                variant="link"
+                className="underline p-0"
+                onClick={onShowLogin}
+              >
                 Увійти
-              </Link>
+              </Button>
             </p>
           </div>
         </div>
