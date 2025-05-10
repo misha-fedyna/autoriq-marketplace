@@ -14,8 +14,8 @@ import RegisterForm from "@/components/registration/RegisterForm";
 const Navbar = () => {
   const pathname = usePathname();
 
-  const session = true;
-  // const session = false;
+  // const session = true;
+  const session = false;
 
   return (
     <nav className="bg-blue-700 p-2 flex justify-between items-center border-b border-blue-500">

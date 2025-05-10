@@ -1,7 +1,9 @@
+import ProtectedRoute from "@/components/ProtectedRoutes";
 import CarCardFav from "../../../components/saved/CarCardFav";
 
 const FavoriteCars = () => {
   return (
+    <ProtectedRoute>
     <div className="mt-[30px] mx-auto max-w-[1024px]">
       <h2 className="text-[50px] font-semibold mb-[3.75rem] text-left ml-[20px] max-sm:text-[30px] max-sm:mb-[30px] max-sm:text-center max-sm:ml-0 max-[320px]:text-[25px]">
         Збережені оголошення :
@@ -11,7 +13,8 @@ const FavoriteCars = () => {
         <CarCardFav />
         <CarCardFav />
       </div>
-    </div>
+      </div>
+    </ProtectedRoute>
   );
 };
 
