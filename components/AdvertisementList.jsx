@@ -1,7 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { getAllAdvertisements, createAdvertisement } from '../api/adverticment';
-import { data } from 'react-router-dom';
+import { getAllAdvertisements, createAdvertisement } from '../app/actions/adverticment';
 
 export default function AdvertisementList() {
   const [ads, setAds] = useState([]);

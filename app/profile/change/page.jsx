@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import ProfilePhotoChanger from '../../../components/changes/PhotoChange'
 import MailPassChange from '../../../components/changes/MailPassChange'
+import ProtectedRoute from '@/components/ProtectedRoutes'
 
 const tabs = [
     { id: 'photo', label: 'Користувач' },
@@ -20,6 +21,7 @@ export default function ProfilePage() {
     }
 
     return (
+        <ProtectedRoute>
         <div className="flex justify-center min-h-screen items-start bg-muted py-10 px-4">
             <div className="flex flex-col md:flex-row w-full max-w-5xl rounded-xl overflow-hidden shadow-md bg-white">
                 <aside className="w-full md:w-56 bg-muted border-b md:border-b-0 md:border-r p-4 space-y-2">
@@ -44,6 +46,7 @@ export default function ProfilePage() {
                     {tab === 'security' && <MailPassChange />}
                 </main>
             </div>
-        </div>
+            </div>
+        </ProtectedRoute>
     )
 }
