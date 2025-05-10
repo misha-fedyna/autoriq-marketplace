@@ -5,11 +5,9 @@ import Link from "next/link";
 import logo from "@/assets/images/logo.png";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
-import { FaGoogle } from "react-icons/fa";
-import { CarFront, SquarePlus, House, MessageSquareMore } from "lucide-react";
+import { CarFront, SquarePlus, House } from "lucide-react";
 import MenuMobile from "@/components/header/MenuMobile";
 import AccountImageAndDropdown from "./AccountImageAndDropdown";
-import RegisterForm from "@/components/registration/RegisterForm";
 import LoginForm from "@/components/Login/LoginForm";
 
 const Navbar = () => {
@@ -83,8 +81,7 @@ const Navbar = () => {
 
         {!session && (
             <>
-              <LoginForm />
-              <RegisterForm />
+            <LoginForm />
             </>
         )}
       </div>

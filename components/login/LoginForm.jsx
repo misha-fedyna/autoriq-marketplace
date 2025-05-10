@@ -1,46 +1,51 @@
-    "use client";
+"use client";
 
-    import {
-        Dialog,
-        DialogTrigger,
-        DialogContent,
-        DialogTitle,
-        DialogDescription,
-        DialogHeader,
-    } from "@/components/ui/dialog";
-    import { Button } from "@/components/ui/button";
-    import { Input } from "@/components/ui/input";
-    import { Label } from "@/components/ui/label";
-    import { useState } from "react";
-    import { Eye, EyeOff } from "lucide-react";
-    import Link from "next/link";
+import {
+    Dialog,
+    DialogTrigger,
+    DialogContent,
+    DialogTitle,
+    DialogDescription,
+    DialogHeader,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
+import Link from "next/link";
+import RegisterForm from "../registration/RegisterForm";
 
-    export default function LoginForm() {
-        const [form, setForm] = useState({
-            email: "",
-            password: "",
-        });
-        const [showPassword, setShowPassword] = useState(false);
+export default function LoginForm() {
+    const [form, setForm] = useState({
+        email: "",
+        password: "",
+    });
+    const [showPassword, setShowPassword] = useState(false);
+    const [showLogin, setShowLogin] = useState(false);
+    const [showRegister, setShowRegister] = useState(false);
 
-        const handleChange = (e) => {
-            const { name, value } = e.target;
-            setForm((prev) => ({
-                ...prev,
-                [name]: value,
-            }));
-        };
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
 
-        const handleSubmit = (e) => {
-            e.preventDefault();
-            console.log("Дані для входу:", form);
-        };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("Дані для входу:", form);
+    };
 
-        return (
-            <Dialog>
+    return (
+        <>
+            <Dialog open={showLogin} onOpenChange={setShowLogin}>
                 <DialogTrigger asChild>
                     <Button
                         variant="ghost"
                         className={"bg-white text-blue-500 hover:bg-blue-300 hover:text-white"}
+                        onClick={() => setShowLogin(true)}
                     >
                         Увійти
                     </Button>
@@ -104,14 +109,30 @@
                                 </Button>
                             </form>
                             <p className="text-sm text-center text-muted-foreground">
-                                Не маєте акаунту? {" "}
-                                <Link href="" className="underline">
+                                Не маєте акаунту?{" "}
+                                <Button
+                                    variant="link"
+                                    className="underline p-0"
+                                    onClick={() => {
+                                        setShowLogin(false);
+                                        setShowRegister(true);
+                                    }}
+                                >
                                     Зареєструватися
-                                </Link>
+                                </Button>
                             </p>
                         </div>
                     </div>
                 </DialogContent>
             </Dialog>
-        );
-    }
+            <RegisterForm
+                show={showRegister}
+                onOpenChange={setShowRegister}
+                onShowLogin={() => {
+                    setShowRegister(false);
+                    setShowLogin(true);
+                }}
+            />
+        </>
+    );
+}
