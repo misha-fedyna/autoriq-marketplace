@@ -10,6 +10,7 @@ import { CarFront, SquarePlus, House, MessageSquareMore } from "lucide-react";
 import MenuMobile from "@/components/header/MenuMobile";
 import AccountImageAndDropdown from "./AccountImageAndDropdown";
 import RegisterForm from "@/components/registration/RegisterForm";
+import LoginForm from "@/components/Login/LoginForm";
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -80,7 +81,12 @@ const Navbar = () => {
       <div className="max-sm:hidden flex justify-end items-center pr-10 space-x-5">
         {session && <AccountImageAndDropdown />}
 
-        {!session && <RegisterForm />}
+        {!session && (
+            <>
+              <LoginForm />
+              <RegisterForm />
+            </>
+        )}
       </div>
       <MenuMobile />
     </nav>
