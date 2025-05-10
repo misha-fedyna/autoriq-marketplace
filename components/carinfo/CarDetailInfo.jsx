@@ -1,3 +1,5 @@
+"use client";
+
 import { Dot } from "lucide-react";
 import { FuelIcon, MapPin } from "lucide-react";
 import gearbox from "../../assets/images/gearbox.png";
@@ -5,8 +7,25 @@ import Image from "next/image";
 import drive from "../../assets/images/drive.png";
 import { Button } from "@/components/ui/button";
 import { Bookmark } from "lucide-react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CarDetailInfo = () => {
+  const isAuth = false;
+  const handleFavoriteClick = () => {
+    if (!isAuth) {
+      toast.warning("Будь ласка, увійдіть в систему, щоб додати автомобіль у обране", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+      return;
+    }
+  }
+
   return (
     <div className="mt-[20px]">
       <h1 className="font-semibold text-[50px] max-sm:text-[35px] max-sm:ml-[10px] max-[375px]:ml-1 max-[375px]:mt-[-10px] max-[320px]:text-[30px]">
@@ -37,10 +56,11 @@ const CarDetailInfo = () => {
           <MapPin className="w-[30px] h-[30px]" /> Львів
         </div>
       </div>
-      <Button className="hidden max-sm:bg-blue-500 max-sm:hover:bg-blue-300 max-sm:rounded-[8px] max-sm:mt-[20px] max-sm:w-[350px] max-sm:h-[60px] max-sm:text-white max-sm:font-semibold max-sm:flex max-sm:items-center max-sm:ml-[10px] max-sm:text-[25px] max-[375px]:items-center max-[320px]:w-[300px]">
+      <Button onClick={handleFavoriteClick} className="hidden max-sm:bg-blue-500 max-sm:hover:bg-blue-300 max-sm:rounded-[8px] max-sm:mt-[20px] max-sm:w-[350px] max-sm:h-[60px] max-sm:text-white max-sm:font-semibold max-sm:flex max-sm:items-center max-sm:ml-[10px] max-sm:text-[25px] max-[375px]:items-center max-[320px]:w-[300px]">
         <Bookmark className="!w-[30px] !h-[30px]" />
         Додати в обране
       </Button>
+      <ToastContainer />
       {/* Characteristics */}
       <div className="!w-[500px] max-sm:!w-[400px] max-sm:mx-auto bg-white shadow-lg h-auto border-2 border-black rounded-[8px] mt-[40px] flex flex-col max-sm:mt-[20px] max-[375px]:!w-[360px] max-[320px]:!w-[300px]">
         <p className="font-medium text-[25px] mt-[10px] ml-[20px] max-sm:ml-[10px] max-[320px]:mt-[5px]">

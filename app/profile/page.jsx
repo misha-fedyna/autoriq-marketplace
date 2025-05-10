@@ -3,9 +3,11 @@ import profileImg from "../../assets/images/profile.png";
 import CarCard from "../../components/profile/carCards.jsx";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import ProtectedRoute from "@/components/ProtectedRoutes";
 
 const Profile = () => {
   return (
+    <ProtectedRoute>
       <div className="max-w-[1280px] mx-auto px-4 md:px-8 mt-[60px] mb-[50px] max-sm:mt-[20px]">
         <div className="flex max-sm:flex-col">
           {/* Left Profile Info */}
@@ -61,12 +63,10 @@ const Profile = () => {
               <CarCard />
               <CarCard />
             </div>
-
-
-
           </div>
         </div>
       </div>
+    </ProtectedRoute>
   );
 };
 
