@@ -9,12 +9,11 @@ import { CarFront, SquarePlus, House } from "lucide-react";
 import MenuMobile from "@/components/header/MenuMobile";
 import AccountImageAndDropdown from "./AccountImageAndDropdown";
 import LoginForm from "@/components/Login/LoginForm";
+import { useAuth } from '@/context/AuthContext';
 
 const Navbar = () => {
   const pathname = usePathname();
-
-  // const session = true;
-  const session = false;
+  const { isAuthenticated } = useAuth();
 
   return (
     <nav className="bg-blue-700 p-2 flex justify-between items-center border-b border-blue-500">
@@ -59,7 +58,7 @@ const Navbar = () => {
             </Button>
           </Link>
 
-          {session && (
+          {isAuthenticated && (
             <Link href="/cars/add-car">
               <Button
                 variant="ghost"
@@ -77,12 +76,10 @@ const Navbar = () => {
       </div>
 
       <div className="max-sm:hidden flex justify-end items-center pr-10 space-x-5">
-        {session && <AccountImageAndDropdown />}
-
-        {!session && (
-            <>
-            <LoginForm />
-            </>
+        {isAuthenticated ? (
+          <AccountImageAndDropdown />
+        ) : (
+          <LoginForm />
         )}
       </div>
       <MenuMobile />

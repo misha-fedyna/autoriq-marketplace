@@ -1,16 +1,26 @@
-'use client';
-import { useRouter } from "next/navigation";
+"use client";
+
+import { useAuth } from "@/context/AuthContext";
+import { useRouter, usePathname } from "next/navigation";
 import { useEffect } from "react";
 
-export default function ProtectedRoute({ children }) { 
+const ProtectedRoutes = ({ children }) => {
+    const { isAuthenticated } = useAuth();
     const router = useRouter();
-    const  isAuthenticated  = false
-    
+    const pathname = usePathname();
+
     useEffect(() => {
         if (!isAuthenticated) {
-            router.replace("/");
-        }
-    }, [isAuthenticated, router]);
+        // Array of protected routes
+        const protectedPaths = ['/profile', '/cars/add-car', '/cars/saved'];
 
-    return isAuthenticated ? children : null;
-}
+        if (protectedPaths.includes(pathname)) {
+            router.push('/');
+        }
+    }
+  }, [isAuthenticated, router, pathname]);
+
+    return <>{children}</>;
+};
+
+export default ProtectedRoutes;
