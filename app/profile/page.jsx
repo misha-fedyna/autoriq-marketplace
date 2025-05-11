@@ -1,11 +1,26 @@
+"use client";
+
 import Image from "next/image";
 import profileImg from "../../assets/images/profile.png";
 import CarCard from "../../components/profile/carCards.jsx";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import ProtectedRoute from "@/components/ProtectedRoutes";
+import useUser from "@/hooks/useUser";
 
 const Profile = () => {
+  const { user, loading } = useUser();
+
+  if (loading) {
+    return (
+      <div className="max-w-[1280px] mx-auto px-4 md:px-8 mt-[60px] mb-[50px] max-sm:mt-[20px]">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+
+  console.log('User data:', user); // Add this line to inspect user data
+
   return (
     <ProtectedRoute>
       <div className="max-w-[1280px] mx-auto px-4 md:px-8 mt-[60px] mb-[50px] max-sm:mt-[20px]">
@@ -16,32 +31,32 @@ const Profile = () => {
 
             <div className="flex mb-4">
               <Image
-                  src={profileImg}
-                  alt="Profile"
-                  className="w-20 h-20 rounded-full border shadow-md"
+                src={user?.avatar || profileImg}
+                alt="Profile"
+                className="w-20 h-20 rounded-full border shadow-md"
               />
             </div>
 
             <div className="space-y-3 text-left">
               <div>
                 <p className="font-bold text-[20px]">Прізвище та ім’я:</p>
-                <p>Коваленко Андрій</p>
+                <p>{user?.username || 'Не вказано'}</p>
               </div>
               <div>
                 <p className="font-bold text-[20px]">Пошта:</p>
-                <p>andriy@gmail.com</p>
+                <p>{user?.email || 'Не вказано'}</p>
               </div>
               <div>
                 <p className="font-bold text-[20px]">Телефон:</p>
-                <p>0958986953</p>
+                <p>{user?.phone || 'Не вказано'}</p>
               </div>
               <div>
                 <p className="font-bold text-[20px]">Область:</p>
-                <p>Львівська</p>
+                <p>{user?.region || 'Не вказано'}</p>
               </div>
               <div>
                 <p className="font-bold text-[20px]">Місто:</p>
-                <p>Львів</p>
+                <p>{user?.city || 'Не вказано'}</p>
               </div>
             </div>
 

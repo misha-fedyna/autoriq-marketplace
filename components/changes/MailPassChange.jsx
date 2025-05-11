@@ -3,8 +3,10 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import useUser from "@/hooks/useUser"
 
 export default function SecuritySettings() {
+    const { user } = useUser();
     const [currentPassword, setCurrentPassword] = useState("")
     const [newPassword, setNewPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
@@ -22,7 +24,7 @@ export default function SecuritySettings() {
             <div>
                 <label className="block text-sm font-medium mb-1">Електронна пошта:</label>
                 <div className="flex items-center space-x-2">
-                    <Input value="andriy@gmail.com" readOnly />
+                    <Input value={user?.email || ''} readOnly />
                     <Button variant="outline" size="icon">
                         ✏️
                     </Button>
