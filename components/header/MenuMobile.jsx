@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
@@ -20,12 +22,11 @@ import {
 import Image from "next/image";
 import profileDefault from "@/assets/images/profile.png";
 import RegisterForm from "../registration/RegisterForm";
+import { useAuth } from "@/context/AuthContext";
 
 const MenuMobile = () => {
   const pathname = usePathname();
-
-  const session = true;
-  // const session = false;
+  const { isAuthenticated } = useAuth();
 
   return (
     <div className="block md:hidden">
@@ -65,8 +66,8 @@ const MenuMobile = () => {
               </Link>
             </SheetDescription>
 
-            <SheetDescription className="w-5">
-              {session && (
+            {isAuthenticated && (
+              <SheetDescription className="w-5">
                 <Link href="/cars/add-car">
                   <Button
                     variant="ghost"
@@ -79,16 +80,17 @@ const MenuMobile = () => {
                     <SquarePlus /> Додати автомобіль
                   </Button>
                 </Link>
-              )}
-            </SheetDescription>
-            <SheetDescription className="w-5">
-              {!session && <RegisterForm />}
-            </SheetDescription>
+              </SheetDescription>
+            )}
 
             <SheetDescription className="w-5">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  {session && (
+              {!isAuthenticated && <RegisterForm />}
+            </SheetDescription>
+
+            {isAuthenticated && (
+              <SheetDescription className="w-5">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
                     <Image
                       src={profileDefault}
                       alt="Profile image"
@@ -96,23 +98,25 @@ const MenuMobile = () => {
                       height={30}
                       className="cursor-pointer ml-2"
                     />
-                  )}
-                </DropdownMenuTrigger>
-                <DropdownMenuContent>
-                  <Link href="/profile">
-                    <DropdownMenuCheckboxItem>Профіль</DropdownMenuCheckboxItem>
-                  </Link>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    <Link href="/profile">
+                      <DropdownMenuCheckboxItem>
+                        Профіль
+                      </DropdownMenuCheckboxItem>
+                    </Link>
 
-                  <Link href="/cars/saved">
-                    <DropdownMenuCheckboxItem>
-                      Збережені авто
-                    </DropdownMenuCheckboxItem>
-                  </Link>
+                    <Link href="/cars/saved">
+                      <DropdownMenuCheckboxItem>
+                        Збережені авто
+                      </DropdownMenuCheckboxItem>
+                    </Link>
 
-                  <DropdownMenuCheckboxItem>Log Out</DropdownMenuCheckboxItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </SheetDescription>
+                    <DropdownMenuCheckboxItem>Log Out</DropdownMenuCheckboxItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </SheetDescription>
+            )}
           </SheetHeader>
         </SheetContent>
       </Sheet>

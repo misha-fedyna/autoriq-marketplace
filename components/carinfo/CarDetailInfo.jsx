@@ -9,11 +9,13 @@ import { Button } from "@/components/ui/button";
 import { Bookmark } from "lucide-react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAuth } from "@/context/AuthContext";
 
 const CarDetailInfo = () => {
-  const isAuth = false;
+  const { isAuthenticated } = useAuth();
+
   const handleFavoriteClick = () => {
-    if (!isAuth) {
+    if (!isAuthenticated) {
       toast.warning("Будь ласка, увійдіть в систему, щоб додати автомобіль у обране", {
         position: "top-right",
         autoClose: 2000,
@@ -24,7 +26,8 @@ const CarDetailInfo = () => {
       });
       return;
     }
-  }
+    // Add favorite logic here when authenticated
+  };
 
   return (
     <div className="mt-[20px]">
