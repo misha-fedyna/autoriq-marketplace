@@ -1,5 +1,6 @@
 "use client";
 
+import axios from "axios";
 import {
   Dialog,
   DialogTrigger,
@@ -11,19 +12,19 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 
-
 export default function RegisterForm({ show, onOpenChange, onShowLogin }) {
   const [form, setForm] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
-    acceptTerms: false,
+    re_password: "",
+    phone: "",
   });
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -33,14 +34,34 @@ export default function RegisterForm({ show, onOpenChange, onShowLogin }) {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!form.acceptTerms) {
-      alert("Щоб продовжити, потрібно прийняти умови використання.");
+    setError("");
+
+    if (form.password !== form.re_password) {
+      setError("Паролі не співпадають");
       return;
     }
-    console.log("Форма реєстрації:", form);
-    // TODO: реалізувати реєстрацію через бекенд
+
+    try {
+      const response = await axios.post("http://localhost:8008/api/users/auth/users/", {
+        email: form.email,
+        username: form.username,
+        phone: form.phone,
+        password: form.password,
+        re_password: form.re_password,
+      });
+
+      console.log("Registration successful:", response.data);
+      onShowLogin();
+    } catch (err) {
+      console.error("Registration error:", err.response?.data);
+      const errorMessage =
+        err.response?.data?.detail ||
+        Object.values(err.response?.data || {})[0]?.[0] ||
+        "Помилка при реєстрації";
+      setError(errorMessage);
+    }
   };
 
   return (
@@ -63,6 +84,7 @@ export default function RegisterForm({ show, onOpenChange, onShowLogin }) {
           ></div>
           <div className="p-8 flex flex-col justify-center space-y-6">
             <DialogHeader>
+              {error && <p className="text-red-500 text-sm">{error}</p>}
               <DialogTitle className="text-2xl text-blue-700">
                 Створіть Ваш акаунт
               </DialogTitle>
@@ -72,13 +94,13 @@ export default function RegisterForm({ show, onOpenChange, onShowLogin }) {
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="name">Прізвіще та ім'я</Label>
+                <Label htmlFor="username">Ім'я користувача</Label>
                 <Input
-                  id="name"
-                  name="name"
+                  id="username"
+                  name="username"
                   type="text"
-                  placeholder="Вкажіть прізвище та ім'я..."
-                  value={form.name}
+                  placeholder="Вкажіть ім'я користувача..."
+                  value={form.username}
                   onChange={handleChange}
                   required
                 />
@@ -90,7 +112,7 @@ export default function RegisterForm({ show, onOpenChange, onShowLogin }) {
                   name="email"
                   type="email"
                   placeholder="Введіть електрону пошту..."
-                  value={form.phone}
+                  value={form.email}
                   onChange={handleChange}
                   required
                 />
@@ -132,25 +154,35 @@ export default function RegisterForm({ show, onOpenChange, onShowLogin }) {
                   )}
                 </button>
               </div>
-              <div className="flex items-center space-x-2">
-                <Checkbox
-                  id="terms"
-                  name="acceptTerms"
-                  checked={form.acceptTerms}
-                  onCheckedChange={(checked) =>
-                    setForm((prev) => ({ ...prev, acceptTerms: !!checked }))
-                  }
+              <div className="space-y-2 relative">
+                <Label htmlFor="repeat-password">Повторіть пароль</Label>
+                <Input
+                  id="repeat-password"
+                  name="re_password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Повторіть пароль..."
+                  value={form.re_password}
+                  onChange={handleChange}
+                  required
+                  className="pr-10"
                 />
-                <label
-                  htmlFor="terms"
-                  className="text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  className="absolute right-3 top-9 text-gray-500 hover:text-gray-700"
+                  tabIndex={-1}
                 >
-                  Продовжуючи, ви приймаєте умови використання Autoriq.
-                </label>
+                  {showPassword ? (
+                    <Eye className="w-5 h-5" />
+                  ) : (
+                    <EyeOff className="w-5 h-5" />
+                  )}
+                </button>
               </div>
               <Button
                 type="submit"
                 className="w-full bg-blue-700 hover:bg-blue-300"
+                onSubmit={handleSubmit}
               >
                 Зареєструватися
               </Button>

@@ -15,6 +15,8 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import RegisterForm from "../registration/RegisterForm";
+import axios from "axios";
+import { useAuth } from '@/context/AuthContext';
 
 export default function LoginForm() {
     const [form, setForm] = useState({
@@ -24,6 +26,8 @@ export default function LoginForm() {
     const [showPassword, setShowPassword] = useState(false);
     const [showLogin, setShowLogin] = useState(false);
     const [showRegister, setShowRegister] = useState(false);
+    const [error, setError] = useState("");
+    const { setIsAuthenticated } = useAuth();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -33,9 +37,28 @@ export default function LoginForm() {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Дані для входу:", form);
+        setError("");
+
+        try {
+            const response = await axios.post('http://localhost:8008/api/users/auth/jwt/create/', {
+                email: form.email,
+                password: form.password
+            });
+
+            // Store the tokens
+            localStorage.setItem('access_token', response.data.access);
+            localStorage.setItem('refresh_token', response.data.refresh);
+
+            // Set authenticated state
+            setIsAuthenticated(true);
+
+            // Close the login dialog
+            setShowLogin(false);
+        } catch (err) {
+            setError(err.response?.data?.detail || "Невірні дані для входу");
+        }
     };
 
     return (
@@ -58,6 +81,7 @@ export default function LoginForm() {
                         ></div>
                         <div className="p-8 flex flex-col justify-center space-y-6">
                             <DialogHeader>
+                                {error && <p className="text-red-500 text-sm">{error}</p>}
                                 <DialogTitle className="text-2xl text-blue-700">Вхід в акаунт</DialogTitle>
                                 <DialogDescription>
                                     Введіть ваші дані для входу в обліковий запис
@@ -65,12 +89,12 @@ export default function LoginForm() {
                             </DialogHeader>
                             <form onSubmit={handleSubmit} className="space-y-4">
                                 <div className="space-y-2">
-                                    <Label htmlFor="email">Електрона пошта</Label>
+                                    <Label htmlFor="email">Електронна пошта</Label>
                                     <Input
                                         id="email"
                                         name="email"
                                         type="email"
-                                        placeholder="Введіть електрону пошту..."
+                                        placeholder="Введіть електронну пошту..."
                                         value={form.email}
                                         onChange={handleChange}
                                         required
