@@ -1,5 +1,9 @@
+import dynamic from "next/dynamic";
 import ProtectedRoute from "@/components/ProtectedRoutes";
-import CarCardFav from "../../../components/saved/CarCardFav";
+
+const CarCardFav = dynamic(() => import("@/components/saved/CarCardFav"), {
+  loading: () => <div>Завантаження...</div>,
+});
 
 const FavoriteCars = () => {
   return (
@@ -19,3 +23,4 @@ const FavoriteCars = () => {
 };
 
 export default FavoriteCars;
+

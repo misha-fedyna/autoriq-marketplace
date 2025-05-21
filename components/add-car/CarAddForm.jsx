@@ -1,18 +1,8 @@
-import { Input } from "../ui/input";
+"use client";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../ui/accordion";
 import { Button } from "../ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "../ui/accordion";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../ui/select";
+import { Input } from "../ui/input";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "../ui/select";
 import { Textarea } from "../ui/textarea";
 
 const CarAddForm = () => {
@@ -26,7 +16,6 @@ const CarAddForm = () => {
 
       <div className="flex flex-col items-center mx-auto mt-[50px] max-sm:mt-0 w-max">
         <Accordion type="multiple">
-          {/* Item 1 */}
           <AccordionItem value="item-1">
             <AccordionTrigger className="text-white">
               <div className="flex items-center flex-row">
@@ -51,7 +40,7 @@ const CarAddForm = () => {
               </div>
             </AccordionContent>
           </AccordionItem>
-          {/* Item 2 */}
+
           <AccordionItem value="item-2">
             <AccordionTrigger className="text-white">
               <div className="flex items-center flex-row">
@@ -66,9 +55,9 @@ const CarAddForm = () => {
               </div>
             </AccordionTrigger>
             <AccordionContent>
-              <div className="grid grid-cols-2 gap-x-[50px] gap-y-[20px] max-sm:grid max-sm:grid-cols-2 max-sm:gap-x-[20px] max-[375px]:gap-y-[10px] max-[320px]:gap-x-[10px]">
+              <div className="grid grid-cols-2 gap-x-[50px] gap-y-[20px] max-sm:grid-cols-2 max-sm:gap-x-[20px] max-[375px]:gap-y-[10px] max-[320px]:gap-x-[10px]">
                 <Select>
-                  <SelectTrigger className="w-[263px] max-sm:w-[170px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]">
+                  <SelectTrigger className="w-[263px] max-sm:w-[170px] max-[375px]:text-[10px]">
                     <SelectValue placeholder="Тип автомобіля" />
                   </SelectTrigger>
                   <SelectContent>
@@ -78,8 +67,9 @@ const CarAddForm = () => {
                     <SelectItem value="krosover">Кросовер</SelectItem>
                   </SelectContent>
                 </Select>
+
                 <Select>
-                  <SelectTrigger className="w-[263px] max-sm:w-[170px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]">
+                  <SelectTrigger className="w-[263px] max-sm:w-[170px] max-[375px]:text-[10px]">
                     <SelectValue placeholder="Марка автомобіля" />
                   </SelectTrigger>
                   <SelectContent>
@@ -93,26 +83,15 @@ const CarAddForm = () => {
                     <SelectItem value="ford">Ford</SelectItem>
                   </SelectContent>
                 </Select>
-                <Input
-                  type="number"
-                  placeholder="Пробіг (тис.км)"
-                  className="w-[263px] max-sm:w-[170px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]"
-                />
-                <Input
-                  type="number"
-                  placeholder="Рік випуску"
-                  className="w-[263px] max-sm:w-[170px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]"
-                />
-                <Input
-                  type="text"
-                  placeholder="Область"
-                  className="w-[263px] max-sm:w-[170px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]"
-                />
-                <Input type="text" placeholder="Місто" className="w-[263px] max-sm:w-[170px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]" />
+
+                <Input type="number" placeholder="Пробіг (тис.км)" className="w-[263px] max-sm:w-[170px] max-[375px]:text-[10px]" />
+                <Input type="number" placeholder="Рік випуску" className="w-[263px] max-sm:w-[170px] max-[375px]:text-[10px]" />
+                <Input type="text" placeholder="Область" className="w-[263px] max-sm:w-[170px] max-[375px]:text-[10px]" />
+                <Input type="text" placeholder="Місто" className="w-[263px] max-sm:w-[170px] max-[375px]:text-[10px]" />
               </div>
             </AccordionContent>
           </AccordionItem>
-          {/* Item 3 */}
+
           <AccordionItem value="item-3">
             <AccordionTrigger className="text-white">
               <div className="flex items-center flex-row">
@@ -130,7 +109,7 @@ const CarAddForm = () => {
               <Textarea placeholder="Опис українською" />
             </AccordionContent>
           </AccordionItem>
-          {/* Item 4 */}
+
           <AccordionItem value="item-4">
             <AccordionTrigger className="text-white">
               <div className="flex items-center flex-row">
@@ -145,10 +124,9 @@ const CarAddForm = () => {
               </div>
             </AccordionTrigger>
             <AccordionContent>
-              <div className="grid grid-cols-2 gap-x-[50px] gap-y-[20px]
-               max-sm:gap-x-0">
+              <div className="grid grid-cols-2 gap-x-[50px] gap-y-[20px] max-sm:gap-x-0">
                 <Select>
-                  <SelectTrigger className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]">
+                  <SelectTrigger className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px]">
                     <SelectValue placeholder="Коробка передач" />
                   </SelectTrigger>
                   <SelectContent>
@@ -156,8 +134,9 @@ const CarAddForm = () => {
                     <SelectItem value="mechanic">Механічна</SelectItem>
                   </SelectContent>
                 </Select>
+
                 <Select>
-                  <SelectTrigger className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]">
+                  <SelectTrigger className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px]">
                     <SelectValue placeholder="Паливо" />
                   </SelectTrigger>
                   <SelectContent>
@@ -166,8 +145,9 @@ const CarAddForm = () => {
                     <SelectItem value="gas">Гас</SelectItem>
                   </SelectContent>
                 </Select>
+
                 <Select>
-                  <SelectTrigger className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]">
+                  <SelectTrigger className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px]">
                     <SelectValue placeholder="Привід" />
                   </SelectTrigger>
                   <SelectContent>
@@ -176,8 +156,9 @@ const CarAddForm = () => {
                     <SelectItem value="backwheeldrive">Задній</SelectItem>
                   </SelectContent>
                 </Select>
+
                 <Select>
-                  <SelectTrigger className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]">
+                  <SelectTrigger className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px]">
                     <SelectValue placeholder="Участь у ДТП" />
                   </SelectTrigger>
                   <SelectContent>
@@ -185,26 +166,15 @@ const CarAddForm = () => {
                     <SelectItem value="no">Ні</SelectItem>
                   </SelectContent>
                 </Select>
-                <Input
-                  type="number"
-                  placeholder="Потужність двигуна"
-                  className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]"
-                />
-                <Input
-                  type="number"
-                  placeholder="О'єм двигуна"
-                  className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]"
-                />
-                <Input
-                  type="number"
-                  placeholder="Кількість дверей"
-                  className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]"
-                />
-                <Input type="text" placeholder="Колір" className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px] max-[375px]:w-[140px] max-[375px]:h-[30px]" />
+
+                <Input type="number" placeholder="Потужність двигуна" className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px]" />
+                <Input type="number" placeholder="О'єм двигуна" className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px]" />
+                <Input type="number" placeholder="Кількість дверей" className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px]" />
+                <Input type="text" placeholder="Колір" className="w-[263px] max-sm:w-[180px] max-[375px]:text-[10px]" />
               </div>
             </AccordionContent>
           </AccordionItem>
-          {/* Item 5 */}
+
           <AccordionItem value="item-5">
             <AccordionTrigger className="text-white">
               <div className="flex items-center flex-row">
@@ -234,6 +204,7 @@ const CarAddForm = () => {
             </AccordionContent>
           </AccordionItem>
         </Accordion>
+
         <Button className="bg-white w-[468px] h-[67px] mt-[60px] font-medium text-[#2196F3] text-[30px] hover:bg-blue-300 hover:text-white max-sm:text-[20px] max-sm:h-[40px] max-sm:w-[300px] max-sm:mt-[30px]">
           Розмістити оголошення
         </Button>

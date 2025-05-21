@@ -11,13 +11,13 @@ export default function SecuritySettings() {
     const [newPassword, setNewPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
 
-    const handleChangePassword = () => {
-        if (newPassword !== confirmPassword) {
-            alert("Новий пароль і підтвердження не співпадають.")
-            return
-        }
-        alert("Пароль успішно змінено!")
+  const handleChangePassword = () => {
+    if (newPassword !== confirmPassword) {
+      alert("Новий пароль і підтвердження не співпадають.");
+      return;
     }
+    alert("Пароль успішно змінено!");
+  };
 
     return (
         <div className="space-y-6 max-w-xl">

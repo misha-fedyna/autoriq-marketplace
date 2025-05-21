@@ -1,5 +1,9 @@
-import CarAddForm from "@/components/add-car/CarAddForm";
 import ProtectedRoute from "@/components/ProtectedRoutes";
+import dynamic from "next/dynamic";
+
+const CarAddForm = dynamic(() => import("@/components/add-car/CarAddForm"), {
+  loading: () => <div>Завантаження...</div>,
+});
 
 const AddCardPage = () => {
   return (

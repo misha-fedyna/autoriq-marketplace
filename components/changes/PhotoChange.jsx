@@ -1,21 +1,21 @@
-import { useState } from "react"
+import { useState } from "react";
 
 const ProfilePhoto = () => {
-    const [previewUrl, setPreviewUrl] = useState(null)
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
+    const [previewUrl, setPreviewUrl] = useState(null);
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
 
     const handleFileChange = (e) => {
-        const file = e.target.files[0]
+        const file = e.target.files[0];
 
         if (file) {
-            const reader = new FileReader()
+            const reader = new FileReader();
             reader.onloadend = () => {
-                setPreviewUrl(reader.result)
-            }
-            reader.readAsDataURL(file)
+                setPreviewUrl(reader.result);
+            };
+            reader.readAsDataURL(file);
         }
-    }
+    };
 
     return (
         <div className="flex-1 p-4 sm:p-6 md:p-10">
@@ -25,9 +25,19 @@ const ProfilePhoto = () => {
             <div className="mb-6">
                 <div className="w-36 h-36 sm:w-48 sm:h-48 bg-gray-100 border flex items-center justify-center mb-4 overflow-hidden rounded-full">
                     {previewUrl ? (
-                        <img src={previewUrl} alt="Preview" className="w-full h-full object-cover" />
+                        <img
+                            src={previewUrl}
+                            alt="Preview"
+                            className="w-full h-full object-cover"
+                            loading="lazy"
+                        />
                     ) : (
-                        <svg className="w-16 h-16 sm:w-20 sm:h-20 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg
+                            className="w-16 h-16 sm:w-20 sm:h-20 text-gray-400"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
                             <path
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
@@ -74,7 +84,7 @@ const ProfilePhoto = () => {
                 </button>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default ProfilePhoto
+export default ProfilePhoto;
