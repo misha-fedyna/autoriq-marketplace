@@ -1,4 +1,3 @@
-import CarState from "./CarState";
 import {
   Accordion,
   AccordionContent,
@@ -55,7 +54,6 @@ const CarFilter = () => {
     <>
       {/* Desktop версія */}
       <div className="flex flex-col w-[250px] max-sm:hidden">
-        <CarState />
         <Accordion type="multiple">
           {/* Тип кузова */}
           <AccordionItem value="item-1">
@@ -161,7 +159,7 @@ const CarFilter = () => {
               <SheetTitle className="text-blue-500 text-3xl w-5 mb-2">
                 Фільтр
               </SheetTitle>
-              <CarState />
+              {/* <SheetDescription> */}
               <Accordion type="multiple">
                 <AccordionItem value="item-1">
                   <AccordionTrigger>Тип кузова</AccordionTrigger>

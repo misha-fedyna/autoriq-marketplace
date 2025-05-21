@@ -1,22 +1,9 @@
 "use client";
-
-import dynamic from "next/dynamic";
-
-const Input = dynamic(() => import("../ui/input"), { ssr: false });
-const Button = dynamic(() => import("../ui/button"), { ssr: false });
-
-const Accordion = dynamic(() => import("../ui/accordion").then(m => m.Accordion), { ssr: false });
-const AccordionItem = dynamic(() => import("../ui/accordion").then(m => m.AccordionItem), { ssr: false });
-const AccordionTrigger = dynamic(() => import("../ui/accordion").then(m => m.AccordionTrigger), { ssr: false });
-const AccordionContent = dynamic(() => import("../ui/accordion").then(m => m.AccordionContent), { ssr: false });
-
-const Select = dynamic(() => import("../ui/select").then(m => m.Select), { ssr: false });
-const SelectTrigger = dynamic(() => import("../ui/select").then(m => m.SelectTrigger), { ssr: false });
-const SelectContent = dynamic(() => import("../ui/select").then(m => m.SelectContent), { ssr: false });
-const SelectItem = dynamic(() => import("../ui/select").then(m => m.SelectItem), { ssr: false });
-const SelectValue = dynamic(() => import("../ui/select").then(m => m.SelectValue), { ssr: false });
-
-const Textarea = dynamic(() => import("../ui/textarea"), { ssr: false });
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "../ui/accordion";
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "../ui/select";
+import { Textarea } from "../ui/textarea";
 
 const CarAddForm = () => {
   return (
