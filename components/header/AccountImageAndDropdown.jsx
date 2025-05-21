@@ -42,6 +42,7 @@ const AccountImageAndDropdown = () => {
           width={30}
           height={30}
           className="cursor-pointer"
+          loading="lazy" 
         />
       </DropdownMenuTrigger>
       <DropdownMenuContent>

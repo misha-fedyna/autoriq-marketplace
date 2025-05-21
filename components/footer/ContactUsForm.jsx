@@ -1,10 +1,16 @@
-import SubmitMessageButton from "./SubmitMessageButton";
+import dynamic from "next/dynamic";
+
+const SubmitMessageButton = dynamic(() => import("./SubmitMessageButton"), {
+  loading: () => <p>Завантаження кнопки...</p>,
+  ssr: false,
+});
 
 const ContactUsForm = () => {
   return (
     <form className="mx-auto max-[320px]:w-[280px] max-[320px]:ml-[-15px]">
       <input type="hidden" id="property" name="property" />
       <input type="hidden" id="recipient" name="recipient" />
+
       <div className="mb-4">
         <label
           className="block text-gray-700 text-sm font-bold mb-2"
@@ -21,6 +27,7 @@ const ContactUsForm = () => {
           required
         />
       </div>
+
       <div className="mb-4">
         <label
           className="block text-gray-700 text-sm font-bold mb-2"
@@ -37,6 +44,7 @@ const ContactUsForm = () => {
           required
         />
       </div>
+
       <div className="mb-4">
         <label
           className="block text-gray-700 text-sm font-bold mb-2"
@@ -52,6 +60,7 @@ const ContactUsForm = () => {
           placeholder="Введіть номер телефону"
         />
       </div>
+
       <div className="mb-4">
         <label
           className="block text-gray-700 text-sm font-bold mb-2"
@@ -66,6 +75,7 @@ const ContactUsForm = () => {
           placeholder="Введіть повідомлення"
         ></textarea>
       </div>
+
       <div>
         <SubmitMessageButton />
       </div>

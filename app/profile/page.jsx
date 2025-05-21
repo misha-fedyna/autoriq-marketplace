@@ -1,12 +1,16 @@
 "use client";
 
 import Image from "next/image";
+import dynamic from "next/dynamic";
 import profileImg from "../../assets/images/profile.png";
-import CarCard from "../../components/profile/carCards.jsx";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import ProtectedRoute from "@/components/ProtectedRoutes";
 import useUser from "@/hooks/useUser";
+
+const CarCard = dynamic(() => import("../../components/profile/carCards.jsx"), {
+  loading: () => <p>Завантаження автомобіля...</p>,
+});
 
 const Profile = () => {
   const { user, loading } = useUser();

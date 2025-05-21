@@ -1,12 +1,15 @@
 "use client";
 
 import { Button } from "../ui/button";
-import { Bookmark } from "lucide-react";
-import { User } from "lucide-react";
-import PhoneButton from "./PhoneButton";
+import dynamic from "next/dynamic";
+import { useAuth } from "@/context/AuthContext";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useAuth } from '@/context/AuthContext';
+import { Suspense } from "react";
+
+const Bookmark = dynamic(() => import("lucide-react").then(mod => mod.Bookmark), { ssr: false });
+const User = dynamic(() => import("lucide-react").then(mod => mod.User), { ssr: false });
+const PhoneButton = dynamic(() => import("./PhoneButton"), { ssr: false });
 
 const RightSideInfo = () => {
   const { isAuthenticated } = useAuth();
@@ -41,11 +44,15 @@ const RightSideInfo = () => {
         {/* User info */}
         <div className="flex items-center mb-[10px] gap-[10px]">
           <div className="rounded-full w-[40px] h-[40px] bg-white border-2 border-gray-500 flex items-center justify-center">
-            <User className="text-gray-500" />
+            <Suspense fallback={<div className="w-[40px] h-[40px] bg-gray-200 rounded-full" />}>
+              <User className="text-gray-500" />
+            </Suspense>
           </div>
           <h1 className="text-[30px] font-normal">Андрій</h1>
         </div>
-        <PhoneButton />
+        <Suspense fallback={<div>Завантаження...</div>}>
+          <PhoneButton />
+        </Suspense>
         {/* User description about car */}
         <p className="text-[30px] mt-[30px] mb-2 max-sm:mt-[10px] max-[320px]:text-[25px] max-[320px]:font-semibold">
           Опис від продавця

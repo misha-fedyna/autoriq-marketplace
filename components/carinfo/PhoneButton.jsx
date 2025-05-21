@@ -1,3 +1,6 @@
+"use client";
+
+import dynamic from "next/dynamic";
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -5,8 +8,9 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
-import { X } from "lucide-react";
-import { User } from "lucide-react";
+
+const X = dynamic(() => import("lucide-react").then(mod => mod.X), { ssr: false });
+const User = dynamic(() => import("lucide-react").then(mod => mod.User), { ssr: false });
 
 const PhoneButton = () => {
   return (

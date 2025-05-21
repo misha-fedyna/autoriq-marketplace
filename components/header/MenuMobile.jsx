@@ -97,6 +97,7 @@ const MenuMobile = () => {
                       width={30}
                       height={30}
                       className="cursor-pointer ml-2"
+                      loading="lazy" // <-- додано lazy loading
                     />
                   </DropdownMenuTrigger>
                   <DropdownMenuContent>

@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Pagination,
   PaginationContent,
@@ -8,7 +10,24 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
+import { useState, useEffect } from "react";
+
 export function PaginationDemo() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1000); // Імітація завантаження 1 сек
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-20 text-gray-500">
+        Завантаження...
+      </div>
+    );
+  }
+
   return (
     <Pagination className="mb-[50px]">
       <PaginationContent>

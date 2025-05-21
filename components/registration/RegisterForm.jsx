@@ -14,11 +14,13 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import Link from "next/link";
 
 export default function RegisterForm({ show, onOpenChange, onShowLogin }) {
   const [form, setForm] = useState({
     username: "",
     email: "",
+    phone: "",
     password: "",
     re_password: "",
     phone: "",
@@ -106,7 +108,7 @@ export default function RegisterForm({ show, onOpenChange, onShowLogin }) {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="email">Електрона пошта</Label>
+                <Label htmlFor="email">Електронна пошта</Label>
                 <Input
                   id="email"
                   name="email"
@@ -122,7 +124,7 @@ export default function RegisterForm({ show, onOpenChange, onShowLogin }) {
                 <Input
                   id="phone"
                   name="phone"
-                  type="phone"
+                  type="tel"
                   placeholder="Введіть номер телефону..."
                   value={form.phone}
                   onChange={handleChange}
