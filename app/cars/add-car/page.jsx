@@ -1,4 +1,8 @@
-import CarAddForm from "@/components/add-car/CarAddForm";
+import dynamic from "next/dynamic";
+
+const CarAddForm = dynamic(() => import("@/components/add-car/CarAddForm"), {
+  loading: () => <div>Завантаження...</div>,
+});
 
 const AddCardPage = () => {
   return (
