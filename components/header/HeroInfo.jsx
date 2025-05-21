@@ -13,7 +13,7 @@ const HeroInfo = ({
     <div>
       <h2 className={nameStyles}>{name}</h2>
       <p className={pStyle}>{description}</p>
-      <Link href={link} className={btnStyle}>
+      <Link href={link} prefetch={false} className={btnStyle}>
         {linkDescription}
       </Link>
     </div>

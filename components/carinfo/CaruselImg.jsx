@@ -64,6 +64,7 @@ const CaruselImg = () => {
                 width={770}
                 height={577}
                 className="rounded-[8px]"
+                loading="lazy"  // <-- додано lazy loading
               />
             </CarouselItem>
           ))}

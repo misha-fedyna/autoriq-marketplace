@@ -14,13 +14,13 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 
 export default function RegisterForm() {
   const [form, setForm] = useState({
     name: "",
     email: "",
+    phone: "",
     password: "",
     acceptTerms: false,
   });
@@ -73,7 +73,7 @@ export default function RegisterForm() {
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="name">Прізвіще та ім'я</Label>
+                <Label htmlFor="name">Прізвище та ім'я</Label>
                 <Input
                   id="name"
                   name="name"
@@ -85,13 +85,13 @@ export default function RegisterForm() {
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="email">Електрона пошта</Label>
+                <Label htmlFor="email">Електронна пошта</Label>
                 <Input
                   id="email"
                   name="email"
                   type="email"
-                  placeholder="Введіть електрону пошту..."
-                  value={form.phone}
+                  placeholder="Введіть електронну пошту..."
+                  value={form.email}
                   onChange={handleChange}
                   required
                 />
@@ -101,7 +101,7 @@ export default function RegisterForm() {
                 <Input
                   id="phone"
                   name="phone"
-                  type="phone"
+                  type="tel"
                   placeholder="Введіть номер телефону..."
                   value={form.phone}
                   onChange={handleChange}

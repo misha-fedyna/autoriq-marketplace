@@ -12,6 +12,7 @@ const CarCardFav = () => {
           src={carCardImg}
           alt="car img"
           className="w-full h-auto object-cover rounded-md"
+          loading="lazy"
         />
 
         <div className="p-2">
@@ -43,7 +44,12 @@ const CarCardFav = () => {
               <span className="font-semibold"></span>
             </p>
             <p className="flex items-center xl:text-[1rem] text-[0.725rem]">
-              <Image src={gearbox} alt="gearbox img" className="w-5 h-5" />{" "}
+              <Image
+                src={gearbox}
+                alt="gearbox img"
+                className="w-5 h-5"
+                loading="lazy"
+              />{" "}
               Механічна
             </p>
           </div>

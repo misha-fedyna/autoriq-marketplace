@@ -28,6 +28,7 @@ const Navbar = () => {
             className="p-0"
             height={100}
             width={100}
+            loading="lazy"   // <-- додано lazy loading
           />
         </Link>
 
@@ -82,10 +83,10 @@ const Navbar = () => {
         {session && <AccountImageAndDropdown />}
 
         {!session && (
-            <>
-              <LoginForm />
-              <RegisterForm />
-            </>
+          <>
+            <LoginForm />
+            <RegisterForm />
+          </>
         )}
       </div>
       <MenuMobile />

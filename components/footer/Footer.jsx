@@ -1,3 +1,6 @@
+"use client";
+
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/assets/images/logo.png";
@@ -9,9 +12,13 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
-import ContactUsForm from "./ContactUsForm";
 import { Button } from "../ui/button";
 import { X } from "lucide-react";
+
+const ContactUsForm = dynamic(() => import("./ContactUsForm"), {
+  loading: () => <p className="text-center">Завантаження форми...</p>,
+  ssr: false,
+});
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

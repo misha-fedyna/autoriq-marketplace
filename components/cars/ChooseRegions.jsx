@@ -1,7 +1,7 @@
 "use client";
 
 import { Check, ChevronDown, X } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -50,6 +50,12 @@ const regions = [
 const ChooseRegions = () => {
   const [open, setOpen] = useState(false);
   const [selectedRegions, setSelectedRegions] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1000); // Імітація завантаження 1 сек
+    return () => clearTimeout(timer);
+  }, []);
 
   const toggleRegion = (regionValue) => {
     setSelectedRegions((prev) =>
@@ -89,35 +95,40 @@ const ChooseRegions = () => {
           </Button>
         </PopoverTrigger>
         <PopoverContent className="w-[250px] p-0">
-          <Command>
-            <CommandInput placeholder="Шукайте регіон..." className="h-9" />
-            <CommandList>
-              <CommandEmpty>Не знайдено такого регіону</CommandEmpty>
-              <CommandGroup>
-                {regions.map((region) => (
-                  <CommandItem
-                    key={region.value}
-                    value={region.value}
-                    onSelect={() => toggleRegion(region.value)}
-                  >
-                    {region.label}
-                    <Check
-                      className={cn(
-                        "ml-auto",
-                        selectedRegions.includes(region.value)
-                          ? "opacity-100"
-                          : "opacity-0"
-                      )}
-                    />
-                  </CommandItem>
-                ))}
-              </CommandGroup>
-            </CommandList>
-          </Command>
+          {loading ? (
+            <div className="flex items-center justify-center h-20 text-gray-500">
+              Завантаження...
+            </div>
+          ) : (
+            <Command>
+              <CommandInput placeholder="Шукайте регіон..." className="h-9" />
+              <CommandList>
+                <CommandEmpty>Не знайдено такого регіону</CommandEmpty>
+                <CommandGroup>
+                  {regions.map((region) => (
+                    <CommandItem
+                      key={region.value}
+                      value={region.value}
+                      onSelect={() => toggleRegion(region.value)}
+                    >
+                      {region.label}
+                      <Check
+                        className={cn(
+                          "ml-auto",
+                          selectedRegions.includes(region.value)
+                            ? "opacity-100"
+                            : "opacity-0"
+                        )}
+                      />
+                    </CommandItem>
+                  ))}
+                </CommandGroup>
+              </CommandList>
+            </Command>
+          )}
         </PopoverContent>
       </Popover>
 
-      {/* Якщо вибрано більше одного регіону, показати їх окремо */}
       {selectedRegions.length > 1 && (
         <div className="border p-2 rounded-md">
           <h2 className="text-sm font-medium mb-2">Вибрані регіони:</h2>

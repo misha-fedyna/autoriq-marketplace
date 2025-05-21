@@ -15,8 +15,6 @@ import {
 import { Checkbox } from "../ui/checkbox";
 import { Label } from "../ui/label";
 import { Input } from "../ui/input";
-import ChooseMarks from "./ChooseMarks";
-import ChooseRegions from "./ChooseRegions";
 import { Button } from "../ui/button";
 import {
   Sheet,
@@ -27,6 +25,16 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Text } from "lucide-react";
+
+import dynamic from "next/dynamic";
+
+// Lazy loading компонентів з індикаторами завантаження
+const ChooseMarks = dynamic(() => import("./ChooseMarks"), {
+  loading: () => <div>Завантаження марок...</div>,
+});
+const ChooseRegions = dynamic(() => import("./ChooseRegions"), {
+  loading: () => <div>Завантаження регіонів...</div>,
+});
 
 const CarFilter = () => {
   const types = [
@@ -45,9 +53,7 @@ const CarFilter = () => {
 
   return (
     <>
-      {/* Laptop */}
-      {/* Laptop */}
-      {/* Laptop */}
+      {/* Desktop версія */}
       <div className="flex flex-col w-[250px] max-sm:hidden">
         <CarState />
         <Accordion type="multiple">
@@ -111,13 +117,8 @@ const CarFilter = () => {
         </Accordion>
         {/* Ціна, регіон, марка */}
         <div className="flex flex-col gap-[10px] mt-[16px]">
-          {/* Марка */}
           <ChooseMarks />
-
-          {/* Регіон */}
           <ChooseRegions />
-
-          {/* Ціна */}
           <h1 className="font-medium">Ціна</h1>
           <div className="flex items-center space-x-2">
             <Input
@@ -149,9 +150,7 @@ const CarFilter = () => {
         </div>
       </div>
 
-      {/* Mobile */}
-      {/* Mobile */}
-      {/* Mobile */}
+      {/* Mobile версія */}
       <div className="md:hidden max-sm:ml-[20px]">
         <Sheet>
           <SheetTrigger className="flex items-center gap-x-3 border-2 p-1 rounded-[8px] shadow-xl">
@@ -162,11 +161,8 @@ const CarFilter = () => {
               <SheetTitle className="text-blue-500 text-3xl w-5 mb-2">
                 Фільтр
               </SheetTitle>
-              {/* <SheetDescription> */}
               <CarState />
-              {/* </SheetDescription> */}
               <Accordion type="multiple">
-                {/* Тип кузова */}
                 <AccordionItem value="item-1">
                   <AccordionTrigger>Тип кузова</AccordionTrigger>
                   <AccordionContent>
@@ -188,7 +184,6 @@ const CarFilter = () => {
                     </div>
                   </AccordionContent>
                 </AccordionItem>
-                {/* Коробка передач */}
                 <AccordionItem value="item-2">
                   <AccordionTrigger>Коробка передач</AccordionTrigger>
                   <AccordionContent>
@@ -210,7 +205,6 @@ const CarFilter = () => {
                     </div>
                   </AccordionContent>
                 </AccordionItem>
-                {/* Привід */}
                 <AccordionItem value="item-3">
                   <AccordionTrigger>Привід</AccordionTrigger>
                   <AccordionContent>
@@ -233,13 +227,9 @@ const CarFilter = () => {
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
-              {/* Ціна, регіон, марка */}
               <div className="flex flex-col gap-[10px] mt-[16px]">
-                {/* Марка */}
                 <ChooseMarks />
-                {/* Регіон */}
                 <ChooseRegions />
-                {/* Ціна */}
                 <h1 className="font-medium max-sm:flex max-sm:justify-start">
                   Ціна
                 </h1>
@@ -267,11 +257,9 @@ const CarFilter = () => {
                 </div>
               </div>
               <SheetDescription>
-                {/* <div className="w-[100%] justify-items-center"> */}
                 <Button className="flex align-middle mt-[20px] text-2xl w-full bg-blue-700 hover:bg-blue-300">
                   Застосувати
                 </Button>
-                {/* </div> */}
               </SheetDescription>
             </SheetHeader>
           </SheetContent>
