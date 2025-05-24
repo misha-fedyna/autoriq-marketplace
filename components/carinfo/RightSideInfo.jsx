@@ -5,14 +5,14 @@ import dynamic from "next/dynamic";
 import { useAuth } from "@/context/AuthContext";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
+import { User, Bookmark } from "lucide-react";
 
-const Bookmark = dynamic(() => import("lucide-react").then(mod => mod.Bookmark), { ssr: false });
-const User = dynamic(() => import("lucide-react").then(mod => mod.User), { ssr: false });
 const PhoneButton = dynamic(() => import("./PhoneButton"), { ssr: false });
 
-const RightSideInfo = () => {
+const RightSideInfo = ({ carInfo }) => {
   const { isAuthenticated } = useAuth();
+  const [favorite, setFavorite] = useState(false);
 
   const handleFavoriteClick = () => {
     if (!isAuthenticated) {
@@ -26,17 +26,37 @@ const RightSideInfo = () => {
       });
       return;
     }
+    setFavorite(!favorite);
+    if (favorite) {
+      toast.error("Автомобіль видалено з обраного", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+      return;
+    }
+    toast.success("Автомобіль додано в обране", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
     // Add favorite logic here when authenticated
   };
 
   return (
     <div className="flex flex-col">
       <h1 className="text-[55px] font-normal max-sm:hidden">
-        Dodge Challenger
+        {carInfo.title}
       </h1>
-      <p className="text-[40px] font-normal max-sm:hidden">47 924 $</p>
+      <p className="text-[40px] font-normal max-sm:hidden">{carInfo.price} $</p>
       <Button onClick={handleFavoriteClick} className="bg-blue-500 hover:bg-blue-300 rounded-[8px] mt-[20px] w-[350px] h-[60px] text-white font-semibold flex items-center justify-center text-[25px] max-sm:hidden">
-        <Bookmark className="!w-[30px] !h-[30px]" />
+        <Bookmark className={`!w-[30px] !h-[30px] ${favorite ? "fill-white" : ""}`} />
         Додати в обране
       </Button>
       <ToastContainer />
@@ -48,22 +68,17 @@ const RightSideInfo = () => {
               <User className="text-gray-500" />
             </Suspense>
           </div>
-          <h1 className="text-[30px] font-normal">Андрій</h1>
+          <h1 className="text-[30px] font-normal">{carInfo.user.username}</h1>
         </div>
         <Suspense fallback={<div>Завантаження...</div>}>
-          <PhoneButton />
+          <PhoneButton userInfo={carInfo.user} carData={carInfo} />
         </Suspense>
         {/* User description about car */}
         <p className="text-[30px] mt-[30px] mb-2 max-sm:mt-[10px] max-[320px]:text-[25px] max-[320px]:font-semibold">
           Опис від продавця
         </p>
         <p className="text-[20px] font-normal">
-          Автомобіль Dodge Challenger 2023 року - це потужний і стильний
-          спортивний автомобіль, який поєднує в собі класичний дизайн і сучасні
-          технології. Він оснащений потужним двигуном, що забезпечує вражаючу
-          продуктивність на дорозі. Інтер'єр автомобіля пропонує комфортні
-          сидіння та сучасну інформаційно-розважальну систему, що робить його
-          ідеальним вибором для тих, хто цінує швидкість і комфорт.
+          {carInfo.description || "Опис відсутній"}
         </p>
       </div>
     </div>

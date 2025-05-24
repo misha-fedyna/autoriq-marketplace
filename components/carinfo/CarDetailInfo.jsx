@@ -9,7 +9,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAuth } from "@/context/AuthContext";
 
-const CarDetailInfo = () => {
+const CarDetailInfo = ({ carInfo }) => {
   const { isAuthenticated } = useAuth();
 
   const handleFavoriteClick = () => {
@@ -30,33 +30,33 @@ const CarDetailInfo = () => {
   return (
     <div className="mt-[20px]">
       <h1 className="font-semibold text-[50px] max-sm:text-[35px] max-sm:ml-[10px] max-[375px]:ml-1 max-[375px]:mt-[-10px] max-[320px]:text-[30px]">
-        Dodge Chalenger 2023
+        {carInfo.title} {carInfo.year}
       </h1>
 
       {/* Price */}
       <div className="flex flex-row mt-0 items-center max-sm:ml-[10px] max-[375px]:ml-1">
-        <p className="font-medium text-[30px] max-[320px]:text-[20px]">47 924 $</p>
+        <p className="font-medium text-[30px] max-[320px]:text-[20px]">{carInfo.price} $</p>
         <Dot />
-        <p className="font-normal text-[20px] max-[320px]:text-[15px]">1 742 160 грн</p>
+        <p className="font-normal text-[20px] max-[320px]:text-[15px]">{carInfo.price * 41} грн</p>
         <Dot />
-        <p className="font-normal text-[20px] max-[320px]:text-[15px]">38 374 €</p>
+        <p className="font-normal text-[20px] max-[320px]:text-[15px]">{carInfo.price * 0.88} €</p>
       </div>
 
       {/* Short info */}
       <div className="grid grid-cols-2 gap-[20px] mt-[20px] max-sm:ml-[10px] max-[375px]:ml-1 max-[375px]:mt-[10px]">
         <div className="flex gap-[10px] items-center">
           <Image src={drive} alt="drive image" className="w-[30px] h-[30px]" loading="lazy" />
-          Задній привід
+          {carInfo.drive_type_display} привід
         </div>
         <div className="flex gap-[10px] items-center">
           <Image src={gearbox} alt="gearbox" className="w-[30px] h-[30px]" loading="lazy" />
-          Автоматична
+          {carInfo.transmission_display}
         </div>
         <div className="flex gap-[10px] items-center">
-          <FuelIcon className="w-[30px] h-[30px]" /> Бензин, 5.7 л
+          <FuelIcon className="w-[30px] h-[30px]" /> {carInfo.fuel_type_display}, {carInfo.engine_capacity} л
         </div>
         <div className="flex gap-[10px] items-center">
-          <MapPin className="w-[30px] h-[30px]" /> Львів
+          <MapPin className="w-[30px] h-[30px]" /> {carInfo.city}
         </div>
       </div>
 
@@ -82,13 +82,13 @@ const CarDetailInfo = () => {
             <p className="font-normal text-[20px] max-sm:text-[18px] max-[375px]:text-[15px] max-[320px]:text-[12px]">VIN-код</p>
           </div>
           <div className="flex flex-col gap-[10px] max-[320px]:gap-[5px]">
-            <p className="font-normal text-[20px] max-sm:text-[18px] max-[375px]:text-[15px] max-[320px]:text-[12px]">375 к.с.</p>
-            <p className="font-normal text-[20px] max-sm:text-[18px] max-[375px]:text-[15px] max-[320px]:text-[12px]">Автоматична</p>
-            <p className="font-normal text-[20px] max-sm:text-[18px] max-[375px]:text-[15px] max-[320px]:text-[12px]">Задній</p>
+            <p className="font-normal text-[20px] max-sm:text-[18px] max-[375px]:text-[15px] max-[320px]:text-[12px]">{carInfo.power} к.с.</p>
+            <p className="font-normal text-[20px] max-sm:text-[18px] max-[375px]:text-[15px] max-[320px]:text-[12px]">{carInfo.transmission_display}</p>
+            <p className="font-normal text-[20px] max-sm:text-[18px] max-[375px]:text-[15px] max-[320px]:text-[12px]">{carInfo.drive_type_display}</p>
             <p className="bg-gray-600 border-2 border-black rounded-full w-[30px] h-[30px] max-[375px]:w-[25px] max-[375px]:h-[25px] max-[320px]:w-[20px] max-[320px]:h-[20px]"></p>
-            <p className="font-normal text-[20px] max-sm:text-[18px] max-[375px]:text-[15px] max-[320px]:text-[12px]">2</p>
-            <p className="font-normal text-[20px] max-sm:text-[18px] max-[375px]:text-[15px] max-[320px]:text-[12px]">Відсутня</p>
-            <p className="font-normal text-[20px] max-sm:text-[18px] max-[375px]:text-[15px] max-[320px]:text-[12px]">1HGCM82633A004352</p>
+            <p className="font-normal text-[20px] max-sm:text-[18px] max-[375px]:text-[15px] max-[320px]:text-[12px]">{carInfo.door_count}</p>
+            <p className="font-normal text-[20px] max-sm:text-[18px] max-[375px]:text-[15px] max-[320px]:text-[12px]"> {carInfo.had_accidents ? "Присутня" : "Відсутня"}</p>
+            <p className="font-normal text-[20px] max-sm:text-[18px] max-[375px]:text-[15px] max-[320px]:text-[12px]">{carInfo.vin_code}</p>
           </div>
         </div>
       </div>

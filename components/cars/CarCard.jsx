@@ -1,23 +1,21 @@
 "use client";
 
 import Image from "next/image";
-import CarImg from "../../public/carusel/img-1.webp";
-import dynamic from "next/dynamic";
 import { Suspense } from "react";
-
-// Lazy load Lucide icons
-const Bookmark = dynamic(() => import("lucide-react").then(mod => mod.Bookmark), { ssr: false });
-const Gauge = dynamic(() => import("lucide-react").then(mod => mod.Gauge), { ssr: false });
-const Fuel = dynamic(() => import("lucide-react").then(mod => mod.Fuel), { ssr: false });
-const MapPin = dynamic(() => import("lucide-react").then(mod => mod.MapPin), { ssr: false });
-
+import { Bookmark, Gauge, Fuel, MapPin } from "lucide-react";
 import gearboxSrc from "../../assets/images/gearbox.png";
 
-const CarCard = () => {
+const CarCard = ({ advertisement }) => {
   return (
     <div className="flex max-[900px]:flex-col w-full max-w-[800px] mx-auto border-2 border-gray-400 shadow-xl rounded-[8px] overflow-hidden">
       <div className="w-full max-[900px]:h-auto">
-        <Image src={CarImg} alt="car image" className="w-full h-auto" />
+        <Image
+          src={advertisement.mainPhoto}
+          alt={`${advertisement.brand} ${advertisement.model}`}
+          width={400}
+          height={400}
+          className="w-full h-auto"
+        />
       </div>
 
       {/* Information */}
@@ -25,7 +23,7 @@ const CarCard = () => {
         {/* Марка */}
         <div className="flex items-center justify-between">
           <h1 className="text-xl md:text-2xl font-bold max-[768px]:text-xl max-[425px]:text-xl">
-            Dodge Challenger 2023
+            {`${advertisement.title} ${advertisement.year}`}
           </h1>
           <Suspense fallback={<div className="w-6 h-6 md:w-8 md:h-8 bg-gray-200 rounded" />}>
             <Bookmark className="w-6 h-6 md:w-8 md:h-8 text-gray-700 max-[768px]:w-6 max-[768px]:h-6 max-[425px]:w-6 max-[425px]:h-6" />
@@ -34,8 +32,8 @@ const CarCard = () => {
 
         {/* Ціна */}
         <div className="flex gap-4 items-center mt-2">
-          <p className="font-bold text-lg md:text-xl max-[768px]:text-lg max-[425px]:text-lg">47 924 $</p>
-          <p className="text-gray-600 text-md md:text-lg max-[768px]:text-md max-[425px]:text-md">1 742 160 грн</p>
+          <p className="font-bold text-lg md:text-xl max-[768px]:text-lg max-[425px]:text-lg">{advertisement.price} $</p>
+          {/* Removed UAH price as it's not provided in the API response */}
         </div>
 
         {/* Характеристики */}
@@ -44,7 +42,7 @@ const CarCard = () => {
             <Suspense fallback={<div className="w-5 h-5 md:w-6 md:h-6 bg-gray-200 rounded" />}>
               <Gauge className="w-5 h-5 md:w-6 md:h-6 max-[768px]:w-5 max-[768px]:h-5 max-[425px]:w-5 max-[425px]:h-5" />
             </Suspense>
-            <span className="text-sm md:text-base max-[768px]:text-sm max-[425px]:text-sm">16 тис. км</span>
+            <span className="text-sm md:text-base max-[768px]:text-sm max-[425px]:text-sm">{advertisement.mileage} тис. км</span>
           </div>
           <div className="flex gap-2 items-center">
             <Suspense fallback={<div className="w-5 h-5 md:w-6 md:h-6 bg-gray-200 rounded" />}>
@@ -55,19 +53,19 @@ const CarCard = () => {
                 priority={false}
               />
             </Suspense>
-            <span className="text-sm md:text-base max-[768px]:text-sm max-[425px]:text-sm">Автоматична</span>
+            <span className="text-sm md:text-base max-[768px]:text-sm max-[425px]:text-sm">Автомат</span>
           </div>
           <div className="flex gap-2 items-center">
             <Suspense fallback={<div className="w-5 h-5 md:w-6 md:h-6 bg-gray-200 rounded" />}>
               <Fuel className="w-5 h-5 md:w-6 md:h-6 max-[768px]:w-5 max-[768px]:h-5 max-[425px]:w-5 max-[425px]:h-5" />
             </Suspense>
-            <span className="text-sm md:text-base max-[768px]:text-sm max-[425px]:text-sm">Бензин, 5.7 л</span>
+            <span className="text-sm md:text-base max-[768px]:text-sm max-[425px]:text-sm">{`${advertisement.fuelType}, ${advertisement.engineCapacity} л`}</span>
           </div>
           <div className="flex gap-2 items-center">
             <Suspense fallback={<div className="w-5 h-5 md:w-6 md:h-6 bg-gray-200 rounded" />}>
               <MapPin className="w-5 h-5 md:w-6 md:h-6 max-[768px]:w-5 max-[768px]:h-5 max-[425px]:w-5 max-[425px]:h-5" />
             </Suspense>
-            <span className="text-sm md:text-base max-[768px]:text-sm max-[425px]:text-sm">Львів</span>
+            <span className="text-sm md:text-base max-[768px]:text-sm max-[425px]:text-sm">{advertisement.city}</span>
           </div>
         </div>
       </div>

@@ -8,15 +8,15 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "../ui/alert-dialog";
+import { User, X } from "lucide-react";
+import { use } from "react";
 
-const X = dynamic(() => import("lucide-react").then(mod => mod.X), { ssr: false });
-const User = dynamic(() => import("lucide-react").then(mod => mod.User), { ssr: false });
-
-const PhoneButton = () => {
+const PhoneButton = ({ userInfo, carData }) => {
+  const secretPhone = userInfo.phone.slice(0, 3);
   return (
     <AlertDialog>
       <AlertDialogTrigger className="flex rounded-[8px] bg-blue-500 m-0 text-white text-[25px] h-12 w-[300px] hover:bg-blue-300 justify-center items-center max-[320px]:w-[250px]">
-        (063) XXX XX XX
+        ({secretPhone}) XXX XX XX
       </AlertDialogTrigger>
       <AlertDialogContent>
         <div className="flex items-center">
@@ -30,16 +30,16 @@ const PhoneButton = () => {
         </div>
         {/* Content */}
         <div className="flex flex-col items-center justify-center max-[320px]:w-[300px] max-[320px]:ml-[-15px]">
-          <p className="text-[25px] font-semibold">Dodge Challenger 2023</p>
+          <p className="text-[25px] font-semibold">{carData.title}</p>
           <div className="flex items-center mb-[10px] mt-[40px] gap-[10px]">
             <div className="rounded-full w-[40px] h-[40px] bg-white border-2 border-gray-500 flex items-center justify-center">
               <User className="text-gray-500" />
             </div>
-            <h1 className="text-[30px] font-normal">Андрій</h1>
+            <h1 className="text-[30px] font-normal">{userInfo.username}</h1>
           </div>
           {/* Number */}
           <div className="flex justify-center items-center h-[50px] bg-blue-500 text-white w-[300px] rounded-[8px] text-[25px] font-semibold mt-[20px] mb-[20px] mx-auto">
-            (063) 587 34 29
+            ({secretPhone}) {userInfo.phone.slice(3, 6)} {userInfo.phone.slice(6, 8)} {userInfo.phone.slice(8, 10)}
           </div>
         </div>
       </AlertDialogContent>
