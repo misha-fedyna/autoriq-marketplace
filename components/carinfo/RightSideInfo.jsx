@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 import { useAuth } from "@/context/AuthContext";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { User, Bookmark } from "lucide-react";
 
 const PhoneButton = dynamic(() => import("./PhoneButton"), { ssr: false });
@@ -13,6 +13,12 @@ const PhoneButton = dynamic(() => import("./PhoneButton"), { ssr: false });
 const RightSideInfo = ({ carInfo }) => {
   const { isAuthenticated } = useAuth();
   const [favorite, setFavorite] = useState(false);
+
+  useEffect(() => {
+    // Перевіряємо чи авто вже в обраному
+    const favs = JSON.parse(localStorage.getItem("favoriteCars") || "[]");
+    setFavorite(favs.some((fav) => fav.id === carInfo.id));
+  }, [carInfo.id]);
 
   const handleFavoriteClick = () => {
     if (!isAuthenticated) {
@@ -26,8 +32,9 @@ const RightSideInfo = ({ carInfo }) => {
       });
       return;
     }
-    setFavorite(!favorite);
+    let favs = JSON.parse(localStorage.getItem("favoriteCars") || "[]");
     if (favorite) {
+      favs = favs.filter((fav) => fav.id !== carInfo.id);
       toast.error("Автомобіль видалено з обраного", {
         position: "top-right",
         autoClose: 2000,
@@ -36,17 +43,21 @@ const RightSideInfo = ({ carInfo }) => {
         pauseOnHover: true,
         draggable: true,
       });
-      return;
+    } else {
+      favs.push(carInfo);
+      toast.success("Автомобіль додано в обране", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
     }
-    toast.success("Автомобіль додано в обране", {
-      position: "top-right",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-    });
-    // Add favorite logic here when authenticated
+    localStorage.setItem("favoriteCars", JSON.stringify(favs));
+    setFavorite(!favorite);
+    // Диспатчимо кастомну подію для оновлення списку збережених авто
+    window.dispatchEvent(new Event("favoriteChanged"));
   };
 
   return (
@@ -55,9 +66,9 @@ const RightSideInfo = ({ carInfo }) => {
         {carInfo.title}
       </h1>
       <p className="text-[40px] font-normal max-sm:hidden">{carInfo.price} $</p>
-      <Button onClick={handleFavoriteClick} className="bg-blue-500 hover:bg-blue-300 rounded-[8px] mt-[20px] w-[350px] h-[60px] text-white font-semibold flex items-center justify-center text-[25px] max-sm:hidden">
+      <Button onClick={handleFavoriteClick} className={`bg-blue-500 hover:bg-blue-300 rounded-[8px] mt-[20px] w-[350px] h-[60px] text-white font-semibold flex items-center justify-center text-[25px] max-sm:hidden ${favorite ? "opacity-70" : ""}`}>
         <Bookmark className={`!w-[30px] !h-[30px] ${favorite ? "fill-white" : ""}`} />
-        Додати в обране
+        {favorite ? "В обраному" : "Додати в обране"}
       </Button>
       <ToastContainer />
       <div className="flex flex-col bg-white rounded-[8px] mt-[40px] max-w-[600px] h-auto shadow-lg p-5 max-sm:mt-[-20px] max-sm:mb-[50px] max-sm:mx-3 max-[375px]:mt-[-30px]">

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Fuel, MapPin, Gauge, Bookmark } from "lucide-react";
+import { Fuel, MapPin, Gauge } from "lucide-react";
 import { useState, useEffect } from "react";
 import { getAllAdvertisements } from "@/app/actions/adverticment";
 import gearbox from "../../assets/images/gearbox.png";
