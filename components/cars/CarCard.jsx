@@ -6,6 +6,8 @@ import { Bookmark, Gauge, Fuel, MapPin } from "lucide-react";
 import gearboxSrc from "../../assets/images/gearbox.png";
 
 const CarCard = ({ advertisement }) => {
+  console.log("CarCard advertisement:", advertisement);
+
   return (
     <div className="flex max-[900px]:flex-col w-full max-w-[800px] mx-auto border-2 border-gray-400 shadow-xl rounded-[8px] overflow-hidden">
       <div className="w-full max-[900px]:h-auto">
@@ -25,9 +27,6 @@ const CarCard = ({ advertisement }) => {
           <h1 className="text-xl md:text-2xl font-bold max-[768px]:text-xl max-[425px]:text-xl">
             {`${advertisement.title} ${advertisement.year}`}
           </h1>
-          <Suspense fallback={<div className="w-6 h-6 md:w-8 md:h-8 bg-gray-200 rounded" />}>
-            <Bookmark className="w-6 h-6 md:w-8 md:h-8 text-gray-700 max-[768px]:w-6 max-[768px]:h-6 max-[425px]:w-6 max-[425px]:h-6" />
-          </Suspense>
         </div>
 
         {/* Ціна */}
@@ -53,7 +52,7 @@ const CarCard = ({ advertisement }) => {
                 priority={false}
               />
             </Suspense>
-            <span className="text-sm md:text-base max-[768px]:text-sm max-[425px]:text-sm">Автомат</span>
+            <span className="text-sm md:text-base max-[768px]:text-sm max-[425px]:text-sm">{advertisement.gearbox}</span>
           </div>
           <div className="flex gap-2 items-center">
             <Suspense fallback={<div className="w-5 h-5 md:w-6 md:h-6 bg-gray-200 rounded" />}>

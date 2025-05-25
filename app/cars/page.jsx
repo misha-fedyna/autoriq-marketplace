@@ -32,7 +32,23 @@ function CarsPage() {
       try {
         setIsLoading(true);
         const response = await getAllAdvertisements();
-        setAdvertisements(response?.results || []);
+        let adsArr = response?.results || [];
+        // For each ad, fetch gearbox if missing
+        const adsWithGearbox = await Promise.all(
+          adsArr.map(async (ad) => {
+            if (!ad.gearbox) {
+              try {
+                const detail = await import("../actions/adverticment");
+                const adDetail = await detail.getAdvertisementById(ad.id);
+                return { ...ad, gearbox: adDetail.gearbox || "Автоматична" };
+              } catch {
+                return { ...ad, gearbox: "Автоматична" };
+              }
+            }
+            return ad;
+          })
+        );
+        setAdvertisements(adsWithGearbox);
       } catch (error) {
         console.error('Error loading initial data:', error);
         setError('Failed to load advertisements');
@@ -75,7 +91,8 @@ function CarsPage() {
                       mainPhoto: ad.main_photo,
                       fuelType: ad.fuel_type_display,
                       engineCapacity: ad.engine_capacity,
-                      createdAt: ad.created_at
+                      createdAt: ad.created_at,
+                      gearbox: ad.gearbox
                     }}
                   />
                 </Link>
