@@ -7,40 +7,18 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-
-import img1 from "../../public/carusel/img-1.webp";
-import img2 from "../../public/carusel/img-2.webp";
-import img3 from "../../public/carusel/img-3.webp";
-import img4 from "../../public/carusel/img-4.webp";
-import img5 from "../../public/carusel/img-5.webp";
-import img6 from "../../public/carusel/img-6.webp";
-import img7 from "../../public/carusel/img-7.webp";
-import img8 from "../../public/carusel/img-8.webp";
-import img9 from "../../public/carusel/img-9.webp";
-import img10 from "../../public/carusel/img-10.webp";
-import img11 from "../../public/carusel/img-11.webp";
-import img12 from "../../public/carusel/img-12.webp";
-
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ImagesIcon } from "lucide-react";
 
-const CaruselImg = () => {
+const CaruselImg = ({ images, mainPhoto }) => {
   const [api, setApi] = useState(null);
   const [current, setCurrent] = useState(0);
-  const images = [
-    img1,
-    img2,
-    img3,
-    img4,
-    img5,
-    img6,
-    img7,
-    img8,
-    img9,
-    img10,
-    img11,
-    img12,
+
+  // Combine main photo with additional photos
+  const allPhotos = [
+    mainPhoto,
+    ...images.map((img) => img.photo),
   ];
 
   useEffect(() => {
@@ -55,17 +33,19 @@ const CaruselImg = () => {
     <div className="relative w-[770px] h-[577px] max-sm:w-[425px] max-sm:h-[100%] max-[375px]:!w-[375px] max-[320px]:!w-[320px]">
       <Carousel setApi={setApi}>
         <CarouselContent>
-          {images.map((img, index) => (
+          {allPhotos.map((photo, index) => (
             <CarouselItem key={index}>
-              <Image
-                src={img}
-                alt="car image"
-                layout="responsive"
-                width={770}
-                height={577}
-                className="rounded-[8px]"
-                loading="lazy"  // <-- додано lazy loading
-              />
+              <div className="w-full h-[350px] md:h-[577px] overflow-hidden flex items-center justify-center bg-gray-100">
+                <Image
+                  src={photo}
+                  alt={`Car image ${index + 1}`}
+                  layout="responsive"
+                  width={770}
+                  height={577}
+                  className="rounded-[8px] object-cover w-full h-full"
+                  loading="lazy"
+                />
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>
@@ -74,7 +54,7 @@ const CaruselImg = () => {
       </Carousel>
       <div className="flex gap-[10px] absolute top-[520px] right-4 bg-black/50 text-white px-4 py-2 rounded-[8px] z-10 max-sm:top-[260px] max-[375px]:!top-[230px] max-sm:right-2 max-[320px]:!top-[190px]">
         <ImagesIcon />
-        {current + 1} із {images.length}
+        {current + 1} із {allPhotos.length}
       </div>
     </div>
   );

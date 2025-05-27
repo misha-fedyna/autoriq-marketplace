@@ -5,17 +5,36 @@ import { Button } from "../ui/button";
 import { Search } from "lucide-react";
 import { useState } from "react";
 
-const SearchCar = () => {
+const SearchCar = ({ onSearch }) => {
   const [loading, setLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const handleSearch = () => {
+  const handleSearch = async () => {
+    if (!searchTerm.trim()) return;
+
     setLoading(true);
-
-    // Імітація затримки пошуку 2 секунди
-    setTimeout(() => {
+    try {
+      const response = await fetch(
+        `http://127.0.0.1:8008/api/cars/advertisements/?search=${encodeURIComponent(
+          searchTerm
+        )}`
+      );
+      if (!response.ok) {
+        throw new Error("Search failed");
+      }
+      const data = await response.json();
+      onSearch(data.results); // Pass results to parent component
+    } catch (error) {
+      console.error("Search error:", error);
+    } finally {
       setLoading(false);
-      // Тут можна додати логіку пошуку або оновлення даних
-    }, 2000);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
   };
 
   return (
@@ -25,6 +44,9 @@ const SearchCar = () => {
         type="text"
         placeholder="Введіть марку або модель..."
         disabled={loading}
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyPress={handleKeyPress}
       />
       <Button
         className="bg-blue-700 hover:bg-blue-300 h-[30px] w-full sm:w-auto"
