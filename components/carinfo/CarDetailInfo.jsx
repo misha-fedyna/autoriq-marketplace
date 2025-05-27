@@ -27,6 +27,7 @@ const CarDetailInfo = ({ carInfo }) => {
     // Add favorite logic here when authenticated
   };
 
+
   return (
     <div className="mt-[20px]">
       <h1 className="font-semibold text-[50px] max-sm:text-[35px] max-sm:ml-[10px] max-[375px]:ml-1 max-[375px]:mt-[-10px] max-[320px]:text-[30px]">
@@ -85,7 +86,7 @@ const CarDetailInfo = ({ carInfo }) => {
             <p className="font-normal text-[20px] max-sm:text-[18px] max-[375px]:text-[15px] max-[320px]:text-[12px]">{carInfo.power} к.с.</p>
             <p className="font-normal text-[20px] max-sm:text-[18px] max-[375px]:text-[15px] max-[320px]:text-[12px]">{carInfo.transmission_display}</p>
             <p className="font-normal text-[20px] max-sm:text-[18px] max-[375px]:text-[15px] max-[320px]:text-[12px]">{carInfo.drive_type_display}</p>
-            <p className="bg-gray-600 border-2 border-black rounded-full w-[30px] h-[30px] max-[375px]:w-[25px] max-[375px]:h-[25px] max-[320px]:w-[20px] max-[320px]:h-[20px]"></p>
+            <p className={`bg-${carInfo.color} border-2 border-black rounded-full w-[30px] h-[30px] max-[375px]:w-[25px] max-[375px]:h-[25px] max-[320px]:w-[20px] max-[320px]:h-[20px]`}></p>
             <p className="font-normal text-[20px] max-sm:text-[18px] max-[375px]:text-[15px] max-[320px]:text-[12px]">{carInfo.door_count}</p>
             <p className="font-normal text-[20px] max-sm:text-[18px] max-[375px]:text-[15px] max-[320px]:text-[12px]"> {carInfo.had_accidents ? "Присутня" : "Відсутня"}</p>
             <p className="font-normal text-[20px] max-sm:text-[18px] max-[375px]:text-[15px] max-[320px]:text-[12px]">{carInfo.vin_code}</p>
