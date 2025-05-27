@@ -35,15 +35,17 @@ const CaruselImg = ({ images, mainPhoto }) => {
         <CarouselContent>
           {allPhotos.map((photo, index) => (
             <CarouselItem key={index}>
-              <Image
-                src={photo}
-                alt={`Car image ${index + 1}`}
-                layout="responsive"
-                width={770}
-                height={577}
-                className="rounded-[8px]"
-                loading="lazy"
-              />
+              <div className="w-full h-[350px] md:h-[577px] overflow-hidden flex items-center justify-center bg-gray-100">
+                <Image
+                  src={photo}
+                  alt={`Car image ${index + 1}`}
+                  layout="responsive"
+                  width={770}
+                  height={577}
+                  className="rounded-[8px] object-cover w-full h-full"
+                  loading="lazy"
+                />
+              </div>
             </CarouselItem>
           ))}
         </CarouselContent>

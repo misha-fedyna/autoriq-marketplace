@@ -10,13 +10,14 @@ const CarCard = ({ advertisement }) => {
 
   return (
     <div className="flex max-[900px]:flex-col w-full max-w-[800px] mx-auto border-2 border-gray-400 shadow-xl rounded-[8px] overflow-hidden">
-      <div className="w-full max-[900px]:h-auto">
+      <div className="w-full h-[300px] max-[900px]:h-auto rounded overflow-hidden bg-gray-100 flex items-center justify-center">
         <Image
           src={advertisement.mainPhoto}
           alt={`${advertisement.brand} ${advertisement.model}`}
-          width={400}
-          height={400}
-          className="w-full h-auto"
+          width={500}
+          height={300}
+          className="w-full h-full object-cover"
+          style={{ objectFit: "cover" }}
         />
       </div>
 
