@@ -35,14 +35,23 @@ export const getAdvertisementById = async (id) => {
 // Create new advertisement
 export const createAdvertisement = async (data) => {
   try {
+    console.log("createAdvertisement start");
+    const token = typeof window !== 'undefined' ? localStorage.getItem('access_token') : null;
+    console.log("fetching...");
     const response = await fetch(`${API_BASE_URL}/cars/advertisements/`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        ...(token ? { 'Authorization': `Bearer ${token}` } : {}),
+        // Не вказуємо Content-Type, щоб браузер сам поставив boundary для multipart/form-data
       },
-      body: JSON.stringify(data),
+      body: data, // data — це FormData
     });
-    if (!response.ok) await handleApiError(response);
+    console.log("fetch done", response.status);
+    if (!response.ok) {
+      const text = await response.text();
+      console.error('API error:', response.status, text);
+      throw new Error(`API Error: ${response.status} - ${text}`);
+    }
     return await response.json();
   } catch (error) {
     console.error('Error creating advertisement:', error);
