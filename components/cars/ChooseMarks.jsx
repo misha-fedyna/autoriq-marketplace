@@ -18,37 +18,20 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { carBrands } from "./CarFilter";
 
-const marks = [
-  { value: "audi", label: "Audi" },
-  { value: "bmw", label: "BMW" },
-  { value: "mercedes-benz", label: "Mercedes-Benz" },
-  { value: "porsche", label: "Porsche" },
-  { value: "volkswagen", label: "Volkswagen" },
-  { value: "toyota", label: "Toyota" },
-  { value: "honda", label: "Honda" },
-  { value: "nissan", label: "Nissan" },
-  { value: "ford", label: "Ford" },
-  { value: "chevrolet", label: "Chevrolet" },
-  { value: "ferrari", label: "Ferrari" },
-  { value: "lamborghini", label: "Lamborghini" },
-  { value: "maserati", label: "Maserati" },
-  { value: "bugatti", label: "Bugatti" },
-  { value: "tesla", label: "Tesla" },
-  { value: "volvo", label: "Volvo" },
-  { value: "subaru", label: "Subaru" },
-  { value: "mazda", label: "Mazda" },
-  { value: "jaguar", label: "Jaguar" },
-  { value: "land-rover", label: "Land Rover" },
-];
+const marks = carBrands.map((brand) => ({
+  value: brand.toLowerCase().replace(/\s|-/g, "-"),
+  label: brand,
+}));
 
-const ChooseMarks = () => {
+// Додаємо пропси для передачі вибраної марки та регіону
+const ChooseMarks = ({ value, onChange }) => {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1000); // імітація завантаження 1 секунда
+    const timer = setTimeout(() => setLoading(false), 1000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -85,7 +68,8 @@ const ChooseMarks = () => {
                       key={mark.value}
                       value={mark.value}
                       onSelect={(currentValue) => {
-                        setValue(currentValue === value ? "" : currentValue);
+                        const newValue = currentValue === value ? "" : currentValue;
+                        onChange(newValue);
                         setOpen(false);
                       }}
                     >

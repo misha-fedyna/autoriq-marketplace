@@ -53,14 +53,15 @@ const CarPage = () => {
   }
 
   return (
-    <div className="flex h-full w-ful bg-blue-100 max-sm:flex-col justify-center">
+    <div className="flex h-full w-ful bg-white max-sm:flex-col justify-center">
+      <div className="bg-blue-100 flex h-[100vh]">
       <div className="flex flex-col ml-[60px] mt-[40px] mb-[100px] max-sm:mx-0 max-sm:mb-[20px]">
         <CaruselImg images={carData.photos} mainPhoto={carData.main_photo} />
         <CarDetailInfo carInfo={carData} />
       </div>
       <div className="flex flex-col mt-[40px] mr-[60px] ml-[40px] max-sm:mx-0">
         <RightSideInfo carInfo={carData} />
-      </div>
+        </div></div>
     </div>
   );
 };

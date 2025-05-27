@@ -27,6 +27,34 @@ function CarsPage() {
     setAdvertisements(searchResults);
   };
 
+  const handleFilter = async (filters) => {
+    setIsLoading(true);
+    setError(null);
+    try {
+      // Формуємо query string
+      const params = new URLSearchParams();
+      if (filters.body?.length) params.append("body_type", filters.body.join(","));
+      if (filters.drive?.length) params.append("drive_type", filters.drive.join(","));
+      if (filters.transmission?.length) params.append("gearbox", filters.transmission.join(","));
+      if (filters.color?.length) params.append("color", filters.color.join(","));
+      if (filters.fuel?.length) params.append("fuel_type", filters.fuel.join(","));
+      if (filters.min_price) params.append("min_price", filters.min_price);
+      if (filters.max_price) params.append("max_price", filters.max_price);
+      if (filters.mark) params.append("brand", filters.mark);
+      if (filters.region) params.append("city", filters.region);
+      // TODO: додати марку, регіон якщо потрібно
+      const url = `http://127.0.0.1:8008/api/cars/advertisements/?${params.toString()}`;
+      const response = await fetch(url);
+      if (!response.ok) throw new Error("Filter fetch failed");
+      const data = await response.json();
+      setAdvertisements(data.results || []);
+    } catch (e) {
+      setError("Не вдалося завантажити авто за фільтром");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
     const loadInitialData = async () => {
       try {
@@ -73,7 +101,7 @@ function CarsPage() {
       <SearchCar onSearch={handleSearch} />
       <div className="flex flex-col items-center w-full">
         <div className="flex w-full max-w-[1280px] gap-10 mt-[65px] mb-[50px] max-md:flex-col max-md:mt-[20px]">
-          <CarFilter />
+          <CarFilter onFilter={handleFilter} />
           <div className="flex flex-col gap-y-[20px] flex-1">
             {advertisements.length > 0 ? (
               advertisements.map((ad) => (
